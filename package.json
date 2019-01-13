@@ -38,6 +38,7 @@
   "devDependencies": {
     "@types/react-redux": "^6.0.12",
     "@types/react-router-dom": "^4.3.1",
-    "@types/redux-logger": "^3.0.6"
+    "@types/redux-logger": "^3.0.6",
+    "@types/styled-components": "^4.1.5"
   }
 }
