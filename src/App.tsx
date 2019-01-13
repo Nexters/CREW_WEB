@@ -5,7 +5,7 @@ import {
   withRouter,
   RouteComponentProps
 } from "react-router-dom";
-import { LandingView } from "views";
+import { LandingView, LoginView } from "views";
 
 export interface Props extends RouteComponentProps {}
 interface State {}
@@ -16,6 +16,7 @@ class App extends Component<Props, State> {
       <div className="App">
         <Switch>
           <Route exact path="/" component={LandingView} />
+          <Route exact path="/login" component={LoginView} />
         </Switch>
       </div>
     );
