@@ -24,7 +24,7 @@ const menus: GnbMenu[] = [
 ];
 
 class Gnb extends PureComponent<Props, State> {
-  render() {
+  public render() {
     return (
       <Styled.Container {...this.props}>
         <Styled.MenuList>

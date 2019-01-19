@@ -5,7 +5,7 @@ export interface Props extends HTMLAttributes<HTMLButtonElement> {}
 interface State {}
 
 class Button extends PureComponent<Props, State> {
-  render() {
+  public render() {
     return <Styled.Button {...this.props}>test</Styled.Button>;
   }
 }

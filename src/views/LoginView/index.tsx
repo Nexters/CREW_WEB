@@ -4,7 +4,7 @@ import { LoginButton } from "components";
 import * as Styled from "./styled";
 
 class LoginView extends PureComponent {
-  render() {
+  public render() {
     return (
       <Styled.LoginView>
         <Styled.LeftContiainer />
