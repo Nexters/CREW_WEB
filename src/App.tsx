@@ -1,11 +1,6 @@
 import React, { Component } from "react";
-import {
-  Route,
-  Switch,
-  withRouter,
-  RouteComponentProps
-} from "react-router-dom";
-import { LandingView, LoginView } from "views";
+import { withRouter, RouteComponentProps } from "react-router-dom";
+import Router from "./Router";
 
 export interface Props extends RouteComponentProps {}
 interface State {}
@@ -14,10 +9,7 @@ class App extends Component<Props, State> {
   render() {
     return (
       <div className="App">
-        <Switch>
-          <Route exact path="/" component={LandingView} />
-          <Route exact path="/login" component={LoginView} />
-        </Switch>
+        <Router />
       </div>
     );
   }
