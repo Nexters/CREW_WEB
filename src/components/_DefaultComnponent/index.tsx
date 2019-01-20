@@ -1,5 +1,5 @@
 import React, { PureComponent, HTMLAttributes } from "react";
-import Styled from "./styled";
+import * as Styled from "./styled";
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {}
 interface State {}
