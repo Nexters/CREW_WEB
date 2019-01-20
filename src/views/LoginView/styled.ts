@@ -21,12 +21,26 @@ export const RightContainer = styled.div`
   height: 100vh;
 `;
 
+export const RightBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const LoginButtons = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
+export const SignUpContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+`;
+
 export const SignUpButton = styled.button`
   border: none;
   background: none;
+  font-size: 20px;
 `;

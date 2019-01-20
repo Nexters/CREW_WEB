@@ -9,12 +9,16 @@ class LoginView extends PureComponent {
       <Styled.LoginView>
         <Styled.LeftContiainer />
         <Styled.RightContainer>
-          <Styled.LoginButtons>
-            <LoginButton>Kakao</LoginButton>
-            <LoginButton>Kakao</LoginButton>
-            <LoginButton>Kakao</LoginButton>
-          </Styled.LoginButtons>
-          <Styled.SignUpButton>회원가입</Styled.SignUpButton>
+          <Styled.RightBody>
+            <Styled.LoginButtons>
+              <LoginButton>Kakao</LoginButton>
+              <LoginButton>Kakao</LoginButton>
+              <LoginButton>Kakao</LoginButton>
+            </Styled.LoginButtons>
+            <Styled.SignUpContainer>
+              <Styled.SignUpButton>회원가입</Styled.SignUpButton>
+            </Styled.SignUpContainer>
+          </Styled.RightBody>
         </Styled.RightContainer>
       </Styled.LoginView>
     );
