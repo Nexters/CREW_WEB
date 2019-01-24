@@ -8,6 +8,16 @@ export const Container = styled.div`
   max-height: 100vh;
 `;
 
+export const BackgroundTop = styled.div``;
+
+export const BackgroundBottom = styled.div`
+  position: absolute;
+  bottom: 0;
+  background: #e3e3f1;
+  width: 100vw;
+  height: 50vh;
+`;
+
 export const Title = styled.h1`
   text-align: center;
   font-size: 30px;
