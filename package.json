@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^3.8.1",
+    "@material-ui/core": "^3.9.0",
     "@types/jest": "23.3.11",
     "@types/node": "10.12.18",
     "@types/react": "16.7.18",
