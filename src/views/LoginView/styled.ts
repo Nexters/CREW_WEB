@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { LIGHT_GRAY } from "constants/colors";
+import { BG_GRAY } from "constants/colors";
 
 export const LoginView = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ export const LoginView = styled.div`
 export const LeftContiainer = styled.div`
   width: calc(100% - 500px);
   height: 100vh;
-  background: ${LIGHT_GRAY};
+  background: ${BG_GRAY};
 `;
 
 export const RightContainer = styled.div`
