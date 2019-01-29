@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from "react";
+import React, { SFC, HTMLAttributes } from "react";
 import * as Styled from "./styled";
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -7,14 +7,14 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   background?: string;
 }
 
-const defaultProps: Props = {
-  width: "auto",
-  height: "auto",
-  background: "#ffffff"
-};
-
-export const Paper = (props: Props = defaultProps) => (
+export const Paper: SFC<Props> = (props) => (
   <Styled.Container {...props}>{props.children}</Styled.Container>
 );
+
+Paper.defaultProps = {
+  width: "auto",
+  height: "auto",
+  background: "white"
+};
 
 export default Paper;
