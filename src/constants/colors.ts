@@ -1,2 +1,2 @@
-export const MAIN_CONLOR = "#5a56f9";
+export const MAIN_COLOR = "#5c5df6";
 export const LIGHT_GRAY = "#dbdbdb";

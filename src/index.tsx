@@ -5,6 +5,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createLogger } from "redux-logger";
 import createSagaMiddleware from "redux-saga";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
+import { MAIN_COLOR } from "constants/colors";
 
 import rootSaga from "./sagas/rootSaga";
 import rootReducer from "./reducers/rootReducer";
@@ -25,10 +27,20 @@ if (process.env.NODE_ENV !== "production") {
 const store = createStore(rootReducer, applyMiddleware(...middlewares));
 sagaMiddleWare.run(rootSaga);
 
+const theme = createMuiTheme({
+  palette: {
+    secondary: {
+      main: MAIN_COLOR
+    }
+  }
+});
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <MuiThemeProvider theme={theme}>
+        <App />
+      </MuiThemeProvider>
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")

@@ -8,12 +8,18 @@ export const Container = styled.div`
 
 export const Thumbnail = styled.img`
   display: inline-block;
-  width: 54px;
-  height: 54px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  margin-right: 40px;
+  margin-right: 16px;
 `;
 
 export const Name = styled.div`
-  font-size: 20px;
+  font-size: 18px;
+`;
+
+export const Position = styled.div`
+  font-size: 10px;
+  color: #9b9b9b;
+  margin-bottom: 5px;
 `;
