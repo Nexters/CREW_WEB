@@ -14,12 +14,16 @@ class ApplicantItem extends PureComponent<Props, State> {
     const { applicant } = this.props;
     return (
       <Styled.Container {...this.props}>
-        <Styled.Thumbnail src={applicant.profileUrl} />
+        <Styled.Left>
+          <Styled.Thumbnail src={applicant.profileUrl} />
+          <div>
+            <Styled.Position>{applicant.position}</Styled.Position>
+            <Styled.Name>{applicant.name}</Styled.Name>
+          </div>
+        </Styled.Left>
         <div>
-          <Styled.Position>디자이너</Styled.Position>
-          <Styled.Name>{applicant.name}</Styled.Name>
+          <Checkbox />
         </div>
-        <Checkbox />
       </Styled.Container>
     );
   }

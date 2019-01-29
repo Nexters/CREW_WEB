@@ -2,8 +2,14 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
   background: white;
+`;
+
+export const Left = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const Thumbnail = styled.img`
