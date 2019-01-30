@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { ApplicantItem, Paper, ClassifiedList } from "components";
+import { Paper, ClassifiedList, ApplicantList } from "components";
 
 import { Applicant } from "models/Applicant";
 import MockedApplicants from "mocks/Applicants";
@@ -26,18 +26,12 @@ class ApplicantView extends PureComponent<Props> {
           <Styled.Body>
             <Styled.Left>
               <Paper style={{ padding: "27px 45px" }} width="620px">
-                <Styled.ApplicantList>
-                  {applicants.map((applicant) => (
-                    <Styled.ApplicantItem key={applicant.id}>
-                      <ApplicantItem applicant={applicant} />
-                    </Styled.ApplicantItem>
-                  ))}
-                </Styled.ApplicantList>
+                <ApplicantList applicants={applicants} />
               </Paper>
             </Styled.Left>
             <Styled.Right>
-              <ClassifiedList title="합격자 리스트" />
-              <ClassifiedList title="불합격자 리스트" />
+              <ClassifiedList title="합격자 리스트" applicants={applicants} />
+              <ClassifiedList title="불합격자 리스트" applicants={applicants} />
             </Styled.Right>
           </Styled.Body>
         </Styled.Main>

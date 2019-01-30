@@ -36,19 +36,3 @@ export const Left = styled.div`
   margin-right: 43px;
 `;
 export const Right = styled.div``;
-
-export const ApplicantList = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-`;
-
-export const ApplicantItem = styled.li`
-  display: block;
-  padding: 10px 0;
-  border-bottom: 1px solid ${LIGHT_MAIN_COLOR};
-
-  :last-child {
-    border-bottom: none;
-  }
-`;
