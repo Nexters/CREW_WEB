@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
+import { ApplicantItem, Paper, ClassifiedList } from "components";
 
-import { ApplicantItem, Paper } from "components";
 import { Applicant } from "models/Applicant";
 import MockedApplicants from "mocks/Applicants";
 
@@ -36,20 +36,8 @@ class ApplicantView extends PureComponent<Props> {
               </Paper>
             </Styled.Left>
             <Styled.Right>
-              <Paper
-                style={{ padding: "27px 45px" }}
-                background="#e6e6f6"
-                width="620px"
-              >
-                test
-              </Paper>
-              <Paper
-                style={{ padding: "27px 45px" }}
-                background="#e6e6f6"
-                width="620px"
-              >
-                test
-              </Paper>
+              <ClassifiedList title="합격자 리스트" />
+              <ClassifiedList title="불합격자 리스트" />
             </Styled.Right>
           </Styled.Body>
         </Styled.Main>
