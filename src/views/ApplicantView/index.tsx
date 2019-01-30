@@ -18,21 +18,41 @@ class ApplicantView extends PureComponent<Props> {
     const { applicants } = this.props;
     return (
       <Styled.Container>
-        <Styled.Title>지원자 리스트</Styled.Title>
-        <div>
-          <Styled.Left>
-            <Paper style={{ padding: "27px 45px" }} width="620px">
-              <Styled.ApplicantList>
-                {applicants.map((applicant) => (
-                  <Styled.ApplicantItem key={applicant.id}>
-                    <ApplicantItem applicant={applicant} />
-                  </Styled.ApplicantItem>
-                ))}
-              </Styled.ApplicantList>
-            </Paper>
-          </Styled.Left>
-          <Styled.Right />
-        </div>
+        <Styled.Main>
+          <Styled.Header>
+            <Styled.Title>지원자 리스트</Styled.Title>
+            <div>1,2,3</div>
+          </Styled.Header>
+          <Styled.Body>
+            <Styled.Left>
+              <Paper style={{ padding: "27px 45px" }} width="620px">
+                <Styled.ApplicantList>
+                  {applicants.map((applicant) => (
+                    <Styled.ApplicantItem key={applicant.id}>
+                      <ApplicantItem applicant={applicant} />
+                    </Styled.ApplicantItem>
+                  ))}
+                </Styled.ApplicantList>
+              </Paper>
+            </Styled.Left>
+            <Styled.Right>
+              <Paper
+                style={{ padding: "27px 45px" }}
+                background="#e6e6f6"
+                width="620px"
+              >
+                test
+              </Paper>
+              <Paper
+                style={{ padding: "27px 45px" }}
+                background="#e6e6f6"
+                width="620px"
+              >
+                test
+              </Paper>
+            </Styled.Right>
+          </Styled.Body>
+        </Styled.Main>
       </Styled.Container>
     );
   }
