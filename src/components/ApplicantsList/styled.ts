@@ -11,6 +11,7 @@ export const Item = styled.li`
   display: block;
   padding: 10px 0;
   border-bottom: 1px solid ${LIGHT_MAIN_COLOR};
+  background: white;
 
   :last-child {
     border-bottom: none;

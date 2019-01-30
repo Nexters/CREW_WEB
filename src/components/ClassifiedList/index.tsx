@@ -1,7 +1,7 @@
 import React, { PureComponent, HTMLAttributes } from "react";
 import * as Styled from "./styled";
 
-import { Paper } from "components";
+import { ApplicantList, Paper } from "components";
 import { Applicant } from "models/Applicant";
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -19,7 +19,7 @@ class ClassifiedList extends PureComponent<Props, State> {
     const { title, applicants } = this.props;
     return (
       <Paper
-        style={{ padding: "27px 45px" }}
+        style={{ padding: "27px 45px", boxShadow: "0 2px 6px 3px #d6d6ff" }}
         background="#e6e6f6"
         width="620px"
       >
@@ -27,7 +27,9 @@ class ClassifiedList extends PureComponent<Props, State> {
           <span>{title}</span>
           <Styled.Count>{applicants.length}</Styled.Count>
         </Styled.Header>
-        <Styled.Body />
+        <Styled.Body>
+          <ApplicantList applicants={applicants} />
+        </Styled.Body>
       </Paper>
     );
   }

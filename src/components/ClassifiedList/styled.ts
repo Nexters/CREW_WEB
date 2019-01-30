@@ -5,10 +5,15 @@ export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 20px;
+  margin-bottom: 15px;
 `;
 
 export const Count = styled.span`
   color: ${MAIN_COLOR};
 `;
 
-export const Body = styled.div``;
+export const Body = styled.div`
+  background: white;
+  padding: 0 32px;
+  border-radius: 4px;
+`;
