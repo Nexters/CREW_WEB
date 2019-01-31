@@ -1,7 +1,13 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react'
 
-import { LoginButton } from "components";
-import * as Styled from "./styled";
+import { LoginButton } from 'components'
+import { Link } from 'react-router-dom'
+
+import GoogleLogo from 'images/googleLogo.png'
+import FacebookLogo from 'images/facebookLogo.png'
+import KakaoLogo from 'images/kakaoLogo.png'
+
+import * as Styled from './styled'
 
 class LoginView extends PureComponent {
   public render() {
@@ -11,18 +17,35 @@ class LoginView extends PureComponent {
         <Styled.RightContainer>
           <Styled.RightBody>
             <Styled.LoginButtons>
-              <LoginButton>Kakao</LoginButton>
-              <LoginButton>Kakao</LoginButton>
-              <LoginButton>Kakao</LoginButton>
+              <LoginButton
+                src={GoogleLogo}
+                borderColor="#ccdefd"
+                fontColor="#70a3fa">
+                Login with Google
+              </LoginButton>
+              <LoginButton
+                src={FacebookLogo}
+                borderColor="#aebbda"
+                fontColor="#39579a">
+                Login with Facebook
+              </LoginButton>
+              <LoginButton
+                src={KakaoLogo}
+                borderColor="#fff264"
+                fontColor="#000000">
+                Login with Kakaotalk
+              </LoginButton>
             </Styled.LoginButtons>
             <Styled.SignUpContainer>
-              <Styled.SignUpButton>회원가입</Styled.SignUpButton>
+              <Link to="/applicants">
+                <Styled.SignUpButton>회원가입</Styled.SignUpButton>
+              </Link>
             </Styled.SignUpContainer>
           </Styled.RightBody>
         </Styled.RightContainer>
       </Styled.LoginView>
-    );
+    )
   }
 }
 
-export default LoginView;
+export default LoginView

@@ -1,11 +1,11 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
+import React from 'react'
+import { Route, Switch } from 'react-router-dom'
 import {
   ApplicantView,
   LandingView,
   LoginView,
   SelectPositionView
-} from "views";
+} from 'views'
 
 const Router = () => (
   <Switch>
@@ -14,6 +14,6 @@ const Router = () => (
     <Route exact path="/position" component={SelectPositionView} />
     <Route exact path="/applicants" component={ApplicantView} />
   </Switch>
-);
+)
 
-export default Router;
+export default Router
