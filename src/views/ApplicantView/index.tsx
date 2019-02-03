@@ -20,15 +20,9 @@ class ApplicantView extends PureComponent<Props> {
       <Styled.Container>
         <Gnb title="서류심사" subTitle="지원자관리" />
         <Styled.Main>
-          <Styled.Header>
-            <Styled.Title>지원자 리스트</Styled.Title>
-            <div>1,2,3</div>
-          </Styled.Header>
           <Styled.Body>
             <Styled.Left>
-              <Paper style={{ padding: "27px 45px" }} width="620px">
-                <ApplicantList applicants={applicants} />
-              </Paper>
+              <ApplicantList applicants={applicants} />
             </Styled.Left>
             <Styled.Right>
               <ClassifiedList title="합격자 리스트" applicants={applicants} />

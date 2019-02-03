@@ -20,8 +20,6 @@ class ClassifiedList extends PureComponent<Props, State> {
     return (
       <Paper
         style={{ padding: "27px 45px", boxShadow: "0 2px 6px 3px #d6d6ff" }}
-        background="#e6e6f6"
-        width="620px"
       >
         <Styled.Header>
           <span>{title}</span>
