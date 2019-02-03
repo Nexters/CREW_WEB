@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import { MAIN_COLOR, GRAY, BLACK } from "constants/colors";
 
@@ -10,6 +10,7 @@ export const Gnb = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
+  background: white;
   width: 100vw;
   height: 200px;
   box-shadow: 0 2px 16px 7px rgba(223, 223, 223, 0.5);
