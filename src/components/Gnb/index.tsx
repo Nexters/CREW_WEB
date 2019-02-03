@@ -1,41 +1,87 @@
 import React, { PureComponent, HTMLAttributes } from "react";
-import Styled from "./styled";
+import { withRouter, RouteComponentProps } from "react-router-dom";
+import qs from "querystring";
+import { Position } from "models/Applicant";
 
-export interface Props extends HTMLAttributes<HTMLDivElement> {}
-interface State {}
+import * as Styled from "./styled";
 
-interface GnbMenu {
-  key: string;
-  label: string;
-  path: string;
+export interface Props
+  extends HTMLAttributes<HTMLDivElement>,
+    RouteComponentProps {
+  subTitle: string;
+  title: string;
+}
+interface State {
+  selectedTab: TabItem;
 }
 
-const menus: GnbMenu[] = [
+interface TabItem {
+  label: Position;
+  value: string;
+}
+
+const tabItems: TabItem[] = [
   {
-    key: "menu1",
-    label: "menu1",
-    path: "/"
+    label: Position.Developer,
+    value: "developer"
   },
   {
-    key: "menu2",
-    label: "menu2",
-    path: "/"
+    label: Position.Designer,
+    value: "designer"
   }
 ];
 
 class Gnb extends PureComponent<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      selectedTab: tabItems[0]
+    };
+  }
   public render() {
     return (
-      <Styled.Container {...this.props}>
-        <Styled.MenuList>
-          {menus.map((menu) => (
-            <Styled.Menu>{menu.label}</Styled.Menu>
-          ))}
-        </Styled.MenuList>
-        test
-      </Styled.Container>
+      <Styled.Gnb {...this.props}>
+        <Styled.Container>
+          <div>
+            <Styled.Subtitle>{this.props.subTitle}</Styled.Subtitle>
+            <Styled.Title>{this.props.title}</Styled.Title>
+          </div>
+          {this.renderTab()}
+        </Styled.Container>
+      </Styled.Gnb>
     );
   }
+
+  private renderTab = () => {
+    const { selectedTab } = this.state;
+    return (
+      <Styled.Tab>
+        {tabItems.map((item) => (
+          <Styled.TabItem
+            key={item.label}
+            onClick={this.handleClickTabItem(item)}
+            isSelected={item === selectedTab}
+          >
+            {item.label}
+          </Styled.TabItem>
+        ))}
+      </Styled.Tab>
+    );
+  };
+
+  private handleClickTabItem = (item: TabItem) => () => {
+    const { history, location } = this.props;
+    history.push({
+      pathname: location.pathname,
+      search: qs.stringify({
+        ...qs.parse(location.search.slice(1)),
+        tab: item.value
+      })
+    });
+    this.setState({
+      selectedTab: item
+    });
+  };
 }
 
-export default Gnb;
+export default withRouter(Gnb);

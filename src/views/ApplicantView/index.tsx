@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { Paper, ClassifiedList, ApplicantList } from "components";
+import { Gnb, Paper, ClassifiedList, ApplicantList } from "components";
 
 import { Applicant } from "models/Applicant";
 import MockedApplicants from "mocks/Applicants";
@@ -18,6 +18,7 @@ class ApplicantView extends PureComponent<Props> {
     const { applicants } = this.props;
     return (
       <Styled.Container>
+        <Gnb title="서류심사" subTitle="지원자관리" />
         <Styled.Main>
           <Styled.Header>
             <Styled.Title>지원자 리스트</Styled.Title>
