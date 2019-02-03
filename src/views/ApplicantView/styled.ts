@@ -5,7 +5,6 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background: ${BG_GRAY};
-  padding-top: 86px;
 `;
 
 export const Main = styled.div`
@@ -35,4 +34,5 @@ export const Body = styled.div`
 export const Left = styled.div`
   margin-right: 43px;
 `;
+
 export const Right = styled.div``;
