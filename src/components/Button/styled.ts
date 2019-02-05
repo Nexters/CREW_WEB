@@ -5,7 +5,10 @@ import { MAIN_COLOR } from "constants/colors";
 
 export const Button = styled.button`
   width: 100px;
-  padding: 10px 20px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid ${MAIN_COLOR};
   border-radius: 4px;
   background: ${(props: Props) => (props.primary ? MAIN_COLOR : "white")};

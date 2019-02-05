@@ -12,7 +12,7 @@ class Button extends PureComponent<Props, State> {
   };
 
   public render() {
-    return <Styled.Button {...this.props}>test</Styled.Button>;
+    return <Styled.Button {...this.props}>{this.props.children}</Styled.Button>;
   }
 }
 
