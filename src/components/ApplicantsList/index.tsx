@@ -21,9 +21,13 @@ class ApplicantsList extends PureComponent<Props, State> {
     const { applicants, type } = this.props;
     return (
       <Styled.List>
-        {applicants.map((applicant) => (
+        {applicants.map((applicant, index) => (
           <Styled.Item key={applicant.id}>
-            <ApplicantItem applicant={applicant} type={type} />
+            <ApplicantItem
+              applicant={applicant}
+              type={type}
+              number={index + 1}
+            />
           </Styled.Item>
         ))}
       </Styled.List>

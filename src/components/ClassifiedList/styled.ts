@@ -14,6 +14,5 @@ export const Count = styled.span`
 
 export const Body = styled.div`
   background: white;
-  padding: 0 32px;
   border-radius: 4px;
 `;
