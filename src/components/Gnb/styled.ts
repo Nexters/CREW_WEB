@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
-import { MAIN_COLOR, GRAY, BLACK } from "constants/colors";
+import { MAIN_COLOR, GRAY, BLACK, LIGHT_GRAY } from "constants/colors";
 
 export interface TabItemProps {
+  isSelected: boolean;
+}
+
+export interface StepProps {
   isSelected: boolean;
 }
 
@@ -18,8 +22,42 @@ export const Gnb = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   width: 1400px;
+`;
+
+export const Body = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const Left = styled.div``;
+
+export const Right = styled.div`
+  display: flex;
+  text-align: right;
+`;
+
+export const Step = styled.div<StepProps>`
+  margin-right: 27px;
+  color: ${(props) => (props.isSelected ? BLACK : LIGHT_GRAY)};
+  cursor: pointer;
+  transition: 0.3s;
+
+  :last-child {
+    margin-right: 0;
+  }
+`;
+export const StepNumber = styled.div`
+  color: inherit;
+  font-size: 25px;
+`;
+
+export const StepLabel = styled.div`
+  color: inherit;
+  font-size: 15px;
 `;
 
 export const Title = styled.h1`
@@ -53,6 +91,7 @@ export const TabItem = styled.li<TabItemProps>`
   color: ${(props) => (props.isSelected ? BLACK : GRAY)};
   margin-right: 30px;
   cursor: pointer;
+  transition: 0.3s;
 
   &:last-child {
     margin-right: 0;

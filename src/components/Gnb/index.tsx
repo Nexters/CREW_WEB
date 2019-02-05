@@ -13,6 +13,7 @@ export interface Props
 }
 interface State {
   selectedTab: TabItem;
+  selectedStep: Step;
 }
 
 interface TabItem {
@@ -20,7 +21,12 @@ interface TabItem {
   value: string;
 }
 
-const tabItems: TabItem[] = [
+interface Step {
+  step: string;
+  label: string;
+}
+
+const TAB_ITEMS: TabItem[] = [
   {
     label: Position.Developer,
     value: "developer"
@@ -31,36 +37,68 @@ const tabItems: TabItem[] = [
   }
 ];
 
+const STEPS = [
+  {
+    step: "01",
+    label: "서류 심사"
+  },
+  {
+    step: "02",
+    label: "면접 심사"
+  },
+  {
+    step: "03",
+    label: "최종 합격"
+  }
+];
+
 class Gnb extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      selectedTab: tabItems[0]
+      selectedTab: TAB_ITEMS[0],
+      selectedStep: STEPS[0]
     };
   }
 
   public componentDidMount() {
     const { history, location } = this.props;
-    const { selectedTab } = this.state;
+    const { selectedTab, selectedStep } = this.state;
     if (location.search === "") {
       history.replace({
         pathname: location.pathname,
         search: qs.stringify({
           ...qs.parse(location.search.slice(1)),
-          tab: selectedTab.value
+          tab: selectedTab.value,
+          step: selectedStep.step
         })
       });
     }
   }
 
   public render() {
+    const { selectedStep } = this.state;
     return (
       <Styled.Gnb {...this.props}>
         <Styled.Container>
-          <div>
-            <Styled.Subtitle>{this.props.subTitle}</Styled.Subtitle>
-            <Styled.Title>{this.props.title}</Styled.Title>
-          </div>
+          <Styled.Subtitle>{this.props.subTitle}</Styled.Subtitle>
+          <Styled.Body>
+            <Styled.Left>
+              <Styled.Title>{this.props.title}</Styled.Title>
+            </Styled.Left>
+            <Styled.Right>
+              {STEPS.map((item) => (
+                <Styled.Step
+                  key={item.step}
+                  isSelected={selectedStep.step === item.step}
+                  onClick={this.handleClickStep(item)}
+                >
+                  <Styled.StepNumber>{item.step}</Styled.StepNumber>
+                  <Styled.StepLabel>{item.label}</Styled.StepLabel>
+                </Styled.Step>
+              ))}
+            </Styled.Right>
+          </Styled.Body>
           {this.renderTab()}
         </Styled.Container>
       </Styled.Gnb>
@@ -71,7 +109,7 @@ class Gnb extends PureComponent<Props, State> {
     const { selectedTab } = this.state;
     return (
       <Styled.Tab>
-        {tabItems.map((item) => (
+        {TAB_ITEMS.map((item) => (
           <Styled.TabItem
             key={item.label}
             onClick={this.handleClickTabItem(item)}
@@ -82,6 +120,20 @@ class Gnb extends PureComponent<Props, State> {
         ))}
       </Styled.Tab>
     );
+  };
+
+  private handleClickStep = (item: Step) => () => {
+    const { history, location } = this.props;
+    history.push({
+      pathname: location.pathname,
+      search: qs.stringify({
+        ...qs.parse(location.search.slice(1)),
+        step: item.step
+      })
+    });
+    this.setState({
+      selectedStep: item
+    });
   };
 
   private handleClickTabItem = (item: TabItem) => () => {
