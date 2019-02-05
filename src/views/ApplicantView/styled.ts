@@ -41,6 +41,11 @@ export const Left = styled.div`
   margin-right: 43px;
 `;
 
+export const LeftHeader = styled.div`
+  font-size: 12px;
+  padding-left: 21px;
+`;
+
 export const Right = styled.div`
   width: 355px;
 `;

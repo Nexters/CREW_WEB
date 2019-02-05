@@ -19,7 +19,7 @@ class ClassifiedList extends PureComponent<Props, State> {
   public render() {
     const { title, applicants } = this.props;
     return (
-      <Paper style={{ padding: "25px" }}>
+      <Styled.Container>
         <Styled.Header>
           <span>{title}</span>
           <Styled.Count>{applicants.length}</Styled.Count>
@@ -27,7 +27,7 @@ class ClassifiedList extends PureComponent<Props, State> {
         <Styled.Body>
           <ApplicantList applicants={applicants} type="simple" />
         </Styled.Body>
-      </Paper>
+      </Styled.Container>
     );
   }
 }
