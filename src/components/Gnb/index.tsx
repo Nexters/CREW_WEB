@@ -12,8 +12,8 @@ export interface Props
   title: string;
 }
 interface State {
-  selectedTab: TabItem;
-  selectedStep: Step;
+  selectedTab: string;
+  selectedStep: string;
 }
 
 interface TabItem {
@@ -56,8 +56,8 @@ class Gnb extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      selectedTab: TAB_ITEMS[0],
-      selectedStep: STEPS[0]
+      selectedTab: TAB_ITEMS[0].value,
+      selectedStep: STEPS[0].step
     };
   }
 
@@ -69,9 +69,15 @@ class Gnb extends PureComponent<Props, State> {
         pathname: location.pathname,
         search: qs.stringify({
           ...qs.parse(location.search.slice(1)),
-          tab: selectedTab.value,
-          step: selectedStep.step
+          tab: selectedTab,
+          step: selectedStep
         })
+      });
+    } else {
+      const { tab, step } = qs.parse(location.search.slice(1));
+      this.setState({
+        selectedStep: step as string,
+        selectedTab: tab as string
       });
     }
   }
@@ -90,7 +96,7 @@ class Gnb extends PureComponent<Props, State> {
               {STEPS.map((item) => (
                 <Styled.Step
                   key={item.step}
-                  isSelected={selectedStep.step === item.step}
+                  isSelected={selectedStep === item.step}
                   onClick={this.handleClickStep(item)}
                 >
                   <Styled.StepNumber>{item.step}</Styled.StepNumber>
@@ -113,7 +119,7 @@ class Gnb extends PureComponent<Props, State> {
           <Styled.TabItem
             key={item.label}
             onClick={this.handleClickTabItem(item)}
-            isSelected={item === selectedTab}
+            isSelected={item.value === selectedTab}
           >
             {item.label}
           </Styled.TabItem>
@@ -132,7 +138,7 @@ class Gnb extends PureComponent<Props, State> {
       })
     });
     this.setState({
-      selectedStep: item
+      selectedStep: item.step
     });
   };
 
@@ -146,7 +152,7 @@ class Gnb extends PureComponent<Props, State> {
       })
     });
     this.setState({
-      selectedTab: item
+      selectedTab: item.value
     });
   };
 }
