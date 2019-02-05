@@ -1,5 +1,6 @@
 import React, { PureComponent, HTMLAttributes } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
+
 import qs from "querystring";
 import { Position } from "models/Applicant";
 
