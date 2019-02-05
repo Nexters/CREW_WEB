@@ -38,6 +38,21 @@ class Gnb extends PureComponent<Props, State> {
       selectedTab: tabItems[0]
     };
   }
+
+  public componentDidMount() {
+    const { history, location } = this.props;
+    const { selectedTab } = this.state;
+    if (location.search === "") {
+      history.replace({
+        pathname: location.pathname,
+        search: qs.stringify({
+          ...qs.parse(location.search.slice(1)),
+          tab: selectedTab.value
+        })
+      });
+    }
+  }
+
   public render() {
     return (
       <Styled.Gnb {...this.props}>
