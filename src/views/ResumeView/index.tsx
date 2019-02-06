@@ -1,4 +1,5 @@
 import React, { PureComponent, Fragment } from "react";
+import { Button } from "components";
 import {
   SinglelineQuestion,
   MultilineQuestion,
@@ -21,6 +22,30 @@ class ResumeView extends PureComponent {
         <Styled.Body>
           <Styled.QuestionList>{this.renderQuestionList()}</Styled.QuestionList>
         </Styled.Body>
+        <Styled.Bottom>
+          <Styled.Section>
+            <Styled.Label>코멘트</Styled.Label>
+            <Styled.Comment />
+            <Button primary>저장하기</Button>
+          </Styled.Section>
+          <Styled.Section>
+            <Styled.Label>점수 매기기</Styled.Label>
+            <Styled.ScoreBoxes>
+              <Styled.ScoreBox type="number" />
+              <Styled.ScoreBox type="number" />
+              <Styled.ScoreBox type="number" />
+              <Styled.ScoreBox type="number" />
+              <Styled.ScoreBox type="number" />
+            </Styled.ScoreBoxes>
+            <Styled.avgScore>
+              <span>평균 점수</span> <b>0</b>점
+            </Styled.avgScore>
+            <Button primary>저장하기</Button>
+          </Styled.Section>
+          <Styled.PickSection>
+            <Styled.PickButton>Pick 하기</Styled.PickButton>
+          </Styled.PickSection>
+        </Styled.Bottom>
       </Styled.Container>
     );
   }
@@ -81,7 +106,9 @@ class ResumeView extends PureComponent {
                 key={option.key}
                 isSelected={question.value === index}
               >
-                <Styled.CheckCircle />
+                <Styled.CheckCircle>
+                  {question.value === index && <i className="xi-check-min" />}
+                </Styled.CheckCircle>
                 <Styled.AnswerLabel>{option.value}</Styled.AnswerLabel>
               </Styled.AnswerOption>
             ))}
