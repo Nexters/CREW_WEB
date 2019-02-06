@@ -41,9 +41,11 @@ export const ProfileImage = styled.img`
 export const ProfileItem = styled.div``;
 
 export const ProfileItemLabel = styled.label`
+  display: inline-block;
   color: ${MAIN_COLOR};
   font-family: NanumSquareR;
   font-size: 20px;
+  padding-bottom: 16px;
 `;
 
 export const ProfileItemValue = styled.div`
@@ -66,15 +68,19 @@ export const Question = styled.li`
   display: flex;
   justify-content: space-between;
   font-size: 25px;
-  margin-bottom: 80px;
+  padding-top: 97px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid #eeeeee;
 `;
 
 export const Index = styled.div`
   color: ${MAIN_COLOR};
+  margin-bottom: 6px;
 `;
 
 export const QuestionTitle = styled.div`
   width: 325px;
+  line-height: 1.6;
 `;
 
 export const Answer = styled.div`
@@ -102,6 +108,7 @@ export const AnswerOption = styled.li<AnswerOptionProps>`
   }
 
   > div {
+    border: 1px solid ${(props) => (props.isSelected ? MAIN_COLOR : "#979797")};
     background: ${(props) => (props.isSelected ? MAIN_COLOR : "")};
   }
 
@@ -112,11 +119,15 @@ export const AnswerOption = styled.li<AnswerOptionProps>`
 `;
 
 export const CheckCircle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 26px;
   height: 26px;
-  border: 1px solid #979797;
   border-radius: 50%;
   margin-right: 28px;
+  color: white;
+  font-size: 22px;
 `;
 
 export const AnswerLabel = styled.label`
@@ -125,4 +136,30 @@ export const AnswerLabel = styled.label`
   padding: 11px 30px;
   font-family: NanumSquareB;
   font-size: 20px;
+`;
+
+export const Bottom = styled.div`
+  width: ${WIDTH}px;
+`;
+
+export const Section = styled.section`
+  padding-top: 95px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
+export const Label = styled.h2`
+  display: block;
+  width: 100%;
+  font-size: 30px;
+`;
+
+export const Comment = styled.textarea`
+  width: 100%;
+  height: 277px;
+  border-radius: 4px;
+  background: #f9f9f9;
+  border: none;
+  margin-bottom: 16px;
 `;

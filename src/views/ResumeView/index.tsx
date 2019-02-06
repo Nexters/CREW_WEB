@@ -21,6 +21,12 @@ class ResumeView extends PureComponent {
         <Styled.Body>
           <Styled.QuestionList>{this.renderQuestionList()}</Styled.QuestionList>
         </Styled.Body>
+        <Styled.Bottom>
+          <Styled.Section>
+            <Styled.Label>코멘트</Styled.Label>
+            <Styled.Comment />
+            <Button primary>저장하기</Button>
+          </Styled.Section>
       </Styled.Container>
     );
   }
