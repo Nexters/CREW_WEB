@@ -24,7 +24,7 @@ export interface MultilineQuestion extends Question {
 export interface SelectQuestion extends Question {
   type: QuestionType.Select;
   options: SelectQuestionOption[];
-  value: string;
+  value: number;
 }
 
 export interface SelectQuestionOption {
