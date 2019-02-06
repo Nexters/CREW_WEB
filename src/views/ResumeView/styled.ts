@@ -163,3 +163,59 @@ export const Comment = styled.textarea`
   border: none;
   margin-bottom: 16px;
 `;
+
+export const ScoreBoxes = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const ScoreBox = styled.input`
+  width: 220px;
+  height: 73px;
+  border-radius: 4px;
+  border: 1px solid #eeeeee;
+  font-size: 30px;
+  text-align: center;
+
+  :focus {
+    outline: none;
+    border: 1.5px solid ${MAIN_COLOR};
+  }
+`;
+
+export const avgScore = styled.div`
+  font-family: NanumSquareR;
+  font-size: 30px;
+
+  > span {
+    display: inline-block;
+    margin: 31px 0;
+    margin-right: 30px;
+  }
+
+  > b {
+    font-family: NanumSquareEB;
+  }
+`;
+
+export const PickSection = styled.section`
+  margin-top: 150px;
+  margin-bottom: 124px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const PickButton = styled.button`
+  width: 354px;
+  height: 86px;
+  border-radius: 3px;
+  background-color: #febc27;
+  font-size: 30px;
+  color: white;
+  font-family: NanumSquareR;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+`;
