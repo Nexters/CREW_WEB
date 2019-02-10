@@ -1,36 +1,59 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+interface ColorProps {
+  color?: string;
+}
+
+export const Conatiner = styled.div`
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+`;
+
+export const LeftContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  max-height: 100vh;
+  width: 50vw;
+  box-sizing: border-box;
+  cursor: pointer;
 `;
 
-export const BackgroundTop = styled.div``;
-
-export const BackgroundBottom = styled.div`
-  position: absolute;
-  bottom: 0;
-  background: #e3e3f1;
-  width: 100vw;
-  height: 50vh;
+export const RightContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  box-sizing: border-box;
+  background: #2a292e;
+  cursor: pointer;
 `;
 
-export const Title = styled.h1`
+export const Body = styled.div`
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  font-size: 30px;
-  margin: 0;
-  margin-bottom: 37px;
+  width: 550px;
 `;
 
-export const CardConatiner = styled.div`
-  > div {
-    margin-right: 46px;
+export const PositionEN = styled.label<ColorProps>`
+  display: inline-block;
+  font-size: 20px;
+  font-family: NanumSquareB;
+  color: ${(props) => props.color};
+  margin-bottom: 18px;
+`;
 
-    :last-child {
-      margin-right: 0;
-    }
-  }
+export const PositionKR = styled.label<ColorProps>`
+  display: inline-block;
+  font-family: NanumSquareB;
+  font-size: 45px;
+  color: ${(props) => props.color};
+  margin-bottom: 30px;
+`;
+
+export const Descritpion = styled.p<ColorProps>`
+  font-family: NanumSquareB;
+  font-size: 20px;
+  color: ${(props) => props.color};
 `;
