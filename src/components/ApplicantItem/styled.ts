@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { YELLOW } from "constants/colors";
+import { YELLOW, GRAY2 } from "constants/colors";
 
 export const Container = styled.div`
   display: flex;
@@ -43,7 +43,7 @@ export const Name = styled.div`
 
 export const Position = styled.div`
   font-size: 10px;
-  color: #9b9b9b;
+  color: ${GRAY2};
   margin-bottom: 5px;
 `;
 
