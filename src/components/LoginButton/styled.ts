@@ -1,13 +1,13 @@
-import styled from 'styled-components'
-import { BG_GRAY } from 'constants/colors'
+import styled from "styled-components";
+import { BG_GRAY } from "constants/colors";
 
-import { Props } from './index'
+import { Props } from "./index";
 
 export const LoginButton = styled.button`
   display: flex;
   align-items: center;
-  width: 285px;
-  height: 60px;
+  width: 340px;
+  height: 56px;
   background: ${BG_GRAY};
   border-radius: 4px;
   padding-left: 67px;
@@ -22,10 +22,10 @@ export const LoginButton = styled.button`
   :focus {
     outline: none;
   }
-`
+`;
 
 export const Logo = styled.img`
   width: 19px;
   height: 19px;
   margin-right: 22px;
-`
+`;

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { GRAY2 } from "constants/colors";
+
 export const Container = styled.div`
   display: inline-block;
   position: relative;
@@ -22,5 +24,5 @@ export const TextLabel = styled.div`
 
 export const Description = styled.div`
   font-size: 16px;
-  color: #9b9b9b;
+  color: ${GRAY2};
 `;
