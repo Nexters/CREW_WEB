@@ -4,7 +4,10 @@ import LoginView from './LoginView';
 import ManageFormView from './ManageFormView';
 import ResumeView from './ResumeView';
 import SelectPositionView from './SelectPositionView';
-import FormView from './FormView';
+import RegisterFormView from './RegisterFormView';
+import ApplyStep1 from './ApplyStep1';
+import ApplyStep2 from './ApplyStep2';
+import ApplyStep3 from './ApplyStep3';
 
 export {
   ApplicantView,
@@ -12,6 +15,9 @@ export {
   LoginView,
   ManageFormView,
   ResumeView,
-  FormView,
-  SelectPositionView
+  RegisterFormView,
+  SelectPositionView,
+  ApplyStep1,
+  ApplyStep2,
+  ApplyStep3
 };

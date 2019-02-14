@@ -9,7 +9,8 @@ import {
   SelectPositionView,
   RegisterFormView,
   ApplyStep1,
-  ApplyStep2
+  ApplyStep2,
+  ApplyStep3
 } from 'views';
 
 const Router = () => (
@@ -23,6 +24,7 @@ const Router = () => (
     <Route exact path="/registerForm" component={RegisterFormView} />
     <Route exact path="/applyStep1" component={ApplyStep1} />
     <Route exact path="/ApplyStep2" component={ApplyStep2} />
+    <Route exact path="/ApplyStep3" component={ApplyStep3} />
   </Switch>
 );
 
