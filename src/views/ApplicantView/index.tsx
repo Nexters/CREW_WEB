@@ -18,7 +18,7 @@ class ApplicantView extends PureComponent<Props> {
     const { applicants } = this.props;
     return (
       <Styled.Container>
-        <Gnb title="서류심사" subTitle="지원자관리" />
+        <Gnb title='서류심사' subTitle='지원자관리' />
         <Styled.Main>
           <Styled.Body>
             <Styled.Left>
@@ -28,9 +28,9 @@ class ApplicantView extends PureComponent<Props> {
               <ApplicantList applicants={applicants} />
             </Styled.Left>
             <Styled.Right>
-              <ClassifiedList title="합격자 리스트" applicants={applicants} />
+              <ClassifiedList title='합격자 리스트' applicants={applicants} />
               <Button primary>메일 보내기</Button>
-              <ClassifiedList title="불합격자 리스트" applicants={applicants} />
+              <ClassifiedList title='불합격자 리스트' applicants={applicants} />
               <Button primary>메일 보내기</Button>
             </Styled.Right>
           </Styled.Body>

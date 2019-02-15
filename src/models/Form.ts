@@ -1,6 +1,6 @@
 export enum QuestionType {
-  Singline,
-  Multiline,
+  SingleLine,
+  MultiLine,
   Select
 }
 
@@ -11,13 +11,13 @@ export interface Question {
   isRequired: boolean;
 }
 
-export interface SinglelineQuestion extends Question {
-  type: QuestionType.Singline;
+export interface SingleLineQuestion extends Question {
+  type: QuestionType.SingleLine;
   value: string;
 }
 
 export interface MultilineQuestion extends Question {
-  type: QuestionType.Multiline;
+  type: QuestionType.MultiLine;
   value: string;
 }
 

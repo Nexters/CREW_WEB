@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from "react";
-import { Button } from "components";
+import { Button, Selections } from "components";
 import {
-  SinglelineQuestion,
+  SingleLineQuestion,
   MultilineQuestion,
   SelectQuestion,
   QuestionType
@@ -31,11 +31,11 @@ class ResumeView extends PureComponent {
           <Styled.Section>
             <Styled.Label>점수 매기기</Styled.Label>
             <Styled.ScoreBoxes>
-              <Styled.ScoreBox type="number" />
-              <Styled.ScoreBox type="number" />
-              <Styled.ScoreBox type="number" />
-              <Styled.ScoreBox type="number" />
-              <Styled.ScoreBox type="number" />
+              <Styled.ScoreBox type='number' />
+              <Styled.ScoreBox type='number' />
+              <Styled.ScoreBox type='number' />
+              <Styled.ScoreBox type='number' />
+              <Styled.ScoreBox type='number' />
             </Styled.ScoreBoxes>
             <Styled.avgScore>
               <span>평균 점수</span> <b>0</b>점
@@ -61,7 +61,7 @@ class ResumeView extends PureComponent {
   private renderProfile = () => {
     return (
       <Fragment>
-        <Styled.ProfileImage src="https://placehold.it/100x100" />
+        <Styled.ProfileImage src='https://placehold.it/100x100' />
         <Styled.ProfileItem>
           <Styled.ProfileItemLabel>이름</Styled.ProfileItemLabel>
           <Styled.ProfileItemValue>장혜연</Styled.ProfileItemValue>
@@ -91,29 +91,15 @@ class ResumeView extends PureComponent {
   private renderQuestionList = () => {
     return MockedQuestions.map((item, index) => {
       let answer;
-      if (item.type === QuestionType.Singline) {
-        const question = item as SinglelineQuestion;
+      if (item.type === QuestionType.SingleLine) {
+        const question = item as SingleLineQuestion;
         answer = <Styled.Answer>{question.value}</Styled.Answer>;
-      } else if (item.type === QuestionType.Multiline) {
+      } else if (item.type === QuestionType.MultiLine) {
         const question = item as MultilineQuestion;
         answer = <Styled.Answer>{question.value}</Styled.Answer>;
       } else if (item.type === QuestionType.Select) {
         const question = item as SelectQuestion;
-        answer = (
-          <Styled.AnswerOptionList>
-            {question.options.map((option, index) => (
-              <Styled.AnswerOption
-                key={option.key}
-                isSelected={question.value === index}
-              >
-                <Styled.CheckCircle>
-                  {question.value === index && <i className="xi-check-min" />}
-                </Styled.CheckCircle>
-                <Styled.AnswerLabel>{option.value}</Styled.AnswerLabel>
-              </Styled.AnswerOption>
-            ))}
-          </Styled.AnswerOptionList>
-        );
+        answer = <Selections question={question} />;
       }
       return (
         <Styled.Question key={`${item.title}::${index}`}>
