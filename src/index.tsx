@@ -28,7 +28,13 @@ const store = createStore(rootReducer, applyMiddleware(...middlewares));
 sagaMiddleWare.run(rootSaga);
 
 const theme = createMuiTheme({
+  typography: {
+    fontFamily: "NanumSquareEB"
+  },
   palette: {
+    primary: {
+      main: MAIN_COLOR
+    },
     secondary: {
       main: MAIN_COLOR
     }

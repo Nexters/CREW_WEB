@@ -2,7 +2,7 @@ import { Question, QuestionType, SelectQuestion } from "models/Form";
 import { MultilineQuestion } from "../models/Form";
 const questions: Question[] = [
   {
-    type: QuestionType.Multiline,
+    type: QuestionType.MultiLine,
     title: "협업 관련 경험이 있으신가요?",
     placeholder: "",
     isRequired: true,
@@ -35,7 +35,7 @@ const questions: Question[] = [
     value: 1
   } as SelectQuestion,
   {
-    type: QuestionType.Multiline,
+    type: QuestionType.MultiLine,
     title: "GUI 제작을 위해 주로 사용하는 프로그램을 선택해주세요.",
     placeholder: "",
     isRequired: true
