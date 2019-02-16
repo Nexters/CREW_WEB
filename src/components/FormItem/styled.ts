@@ -31,6 +31,7 @@ export const BorderTop = styled.div`
 
 export const Left = styled.div`
   margin-right: 102px;
+  width: 490px;
 `;
 
 export const Index = styled.div`
