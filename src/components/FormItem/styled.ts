@@ -49,6 +49,21 @@ export const Title = styled.div`
 export const Right = styled.div`
   width: 575px;
 `;
+export const RightTop = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+
+  > div:first-child {
+    width: 200px;
+  }
+`;
+
+export const RightBottom = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
 
 export const SingleLine = styled.input`
   width: 100%;

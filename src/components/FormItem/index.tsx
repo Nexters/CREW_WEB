@@ -1,6 +1,9 @@
 import React, { PureComponent, HTMLAttributes } from "react";
 import Select from "react-select";
+import { ValueType } from "react-select/lib/types";
 import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
 
 import { QuestionType, SelectQuestion, Question } from "models/Form";
 import { Selections } from "components";
@@ -8,7 +11,12 @@ import { Selections } from "components";
 import * as Styled from "./styled";
 import mocked from "mocks/Forms";
 
-const options = [
+interface QuestionOption {
+  value: QuestionType;
+  label: string;
+}
+
+const options: QuestionOption[] = [
   { value: QuestionType.SingleLine, label: "단문형" },
   { value: QuestionType.MultiLine, label: "장문형" },
   { value: QuestionType.Select, label: "객관식" }
@@ -20,7 +28,9 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 
 interface State {
+  selectedOption: QuestionOption;
   title: string;
+  isRequired: boolean;
 }
 
 class FormItem extends PureComponent<Props, State> {
@@ -29,14 +39,16 @@ class FormItem extends PureComponent<Props, State> {
     const { question } = props;
     if (question) {
       this.state = {
-        title: question.title
+        title: question.title,
+        isRequired: true,
+        selectedOption: options[0]
       };
     }
   }
 
   public render() {
-    const { index, question } = this.props;
-    const { title } = this.state;
+    const { index } = this.props;
+    const { title, selectedOption, isRequired } = this.state;
     return (
       <Styled.Container {...this.props}>
         <Styled.BorderTop />
@@ -50,8 +62,29 @@ class FormItem extends PureComponent<Props, State> {
           />
         </Styled.Left>
         <Styled.Right>
-          <Select value={options[0]} options={options} isSearchable={false} />
-          {this.renderRight(question.type)}
+          <Styled.RightTop>
+            <Select
+              value={selectedOption}
+              options={options}
+              isSearchable={false}
+              onChange={this.handleChangeQuestionType}
+            />
+          </Styled.RightTop>
+          {this.renderRight(selectedOption.value)}
+          <Styled.RightBottom>
+            <i className='xi-trash-o' />
+            <FormControlLabel
+              control={
+                <Switch
+                  onChange={this.handleChangeRequired}
+                  color='primary'
+                  checked={isRequired}
+                />
+              }
+              label='필수'
+              labelPlacement='start'
+            />
+          </Styled.RightBottom>
         </Styled.Right>
       </Styled.Container>
     );
@@ -61,6 +94,18 @@ class FormItem extends PureComponent<Props, State> {
     const { value } = e.target;
     this.setState({
       title: value
+    });
+  };
+
+  private handleChangeRequired = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    this.setState({ isRequired: event.target.checked });
+  };
+
+  private handleChangeQuestionType = (option: any) => {
+    this.setState({
+      selectedOption: option
     });
   };
 

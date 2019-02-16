@@ -1,7 +1,7 @@
 export enum QuestionType {
-  SingleLine,
-  MultiLine,
-  Select
+  SingleLine = "singleline",
+  MultiLine = "multiline",
+  Select = "select"
 }
 
 export interface Question {
