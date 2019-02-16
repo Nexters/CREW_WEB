@@ -49,3 +49,9 @@ export const LeftHeader = styled.div`
 export const Right = styled.div`
   width: 355px;
 `;
+
+export const RightButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px;
+`;

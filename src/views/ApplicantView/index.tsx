@@ -48,13 +48,17 @@ class ApplicantView extends PureComponent<Props, State> {
                 applicants={applicants}
                 onCheck={this.selectApplicant}
               />
-              <button onClick={this.handleClilckSaveButton}>save</button>
+              <button onClick={this.handleClickSaveButton}>save</button>
             </Styled.Left>
             <Styled.Right>
               <ClassifiedList title="합격자 리스트" applicants={applicants} />
-              <Button primary>메일 보내기</Button>
+              <Styled.RightButtonWrapper>
+                <Button primary>메일 보내기</Button>
+              </Styled.RightButtonWrapper>
               <ClassifiedList title="불합격자 리스트" applicants={applicants} />
-              <Button primary>메일 보내기</Button>
+              <Styled.RightButtonWrapper>
+                <Button primary>메일 보내기</Button>
+              </Styled.RightButtonWrapper>
             </Styled.Right>
           </Styled.Body>
         </Styled.Main>
@@ -62,7 +66,7 @@ class ApplicantView extends PureComponent<Props, State> {
     );
   }
 
-  private handleClilckSaveButton = () => {
+  private handleClickSaveButton = () => {
     const { applicants } = this.props;
     const { selectedList } = this.state;
     this.props.saveApplicantsList(applicants, selectedList);
