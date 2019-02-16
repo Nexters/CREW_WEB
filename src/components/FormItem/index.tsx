@@ -1,29 +1,28 @@
 import React, { PureComponent, HTMLAttributes } from "react";
-import { QuestionType, SelectQuestion } from "models/Form";
+import { QuestionType, SelectQuestion, Question } from "models/Form";
 import { Selections } from "components";
 
 import * as Styled from "./styled";
 import mocked from "mocks/Forms";
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
-  type: QuestionType;
+  question: Question;
   index: number;
-  title: string;
 }
 
 interface State {}
 
 class FormItem extends PureComponent<Props, State> {
   public render() {
-    const { index, title, type } = this.props;
+    const { index, question } = this.props;
     return (
       <Styled.Container {...this.props}>
         <Styled.BorderTop />
         <Styled.Left>
           <Styled.Index>{this.pad(index)}</Styled.Index>
-          <Styled.Title>{title}</Styled.Title>
+          <Styled.Title>{question.title}</Styled.Title>
         </Styled.Left>
-        <Styled.Right>{this.renderRight(type)}</Styled.Right>
+        <Styled.Right>{this.renderRight(question.type)}</Styled.Right>
       </Styled.Container>
     );
   }
