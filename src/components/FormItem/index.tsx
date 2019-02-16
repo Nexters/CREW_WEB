@@ -1,26 +1,29 @@
 import React, { PureComponent, HTMLAttributes } from "react";
-import { QuestionType } from "models/Form";
+import { QuestionType, SelectQuestion } from "models/Form";
+import { Selections } from "components";
 
 import * as Styled from "./styled";
+import mocked from "mocks/Forms";
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
-  index: number;
   type: QuestionType;
+  index: number;
+  title: string;
 }
+
 interface State {}
 
 class FormItem extends PureComponent<Props, State> {
   public render() {
-    const { index } = this.props;
+    const { index, title, type } = this.props;
     return (
       <Styled.Container {...this.props}>
+        <Styled.BorderTop />
         <Styled.Left>
           <Styled.Index>{this.pad(index)}</Styled.Index>
-          <Styled.Title>
-            지원자가 NEXTERS에 지원하게 된 동기는 무엇인가요?
-          </Styled.Title>
+          <Styled.Title>{title}</Styled.Title>
         </Styled.Left>
-        <Styled.Right>2</Styled.Right>
+        <Styled.Right>{this.renderRight(type)}</Styled.Right>
       </Styled.Container>
     );
   }
@@ -30,6 +33,20 @@ class FormItem extends PureComponent<Props, State> {
     return (
       base.slice(0, base.length - number.toString().length) + number.toString()
     );
+  };
+
+  private renderRight = (type: QuestionType) => {
+    switch (type) {
+      case QuestionType.SingleLine: {
+        return <Styled.SingleLine type='text' />;
+      }
+      case QuestionType.MultiLine: {
+        return <Styled.MultiLine />;
+      }
+      case QuestionType.Select: {
+        return <Selections question={mocked[1] as SelectQuestion} />;
+      }
+    }
   };
 }
 
