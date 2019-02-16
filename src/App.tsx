@@ -6,7 +6,7 @@ export interface Props extends RouteComponentProps {}
 interface State {}
 
 class App extends Component<Props, State> {
-  render() {
+  public render() {
     return (
       <div className="App">
         <Router />

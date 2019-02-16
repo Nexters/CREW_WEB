@@ -30,27 +30,27 @@ interface Step {
 const TAB_ITEMS: TabItem[] = [
   {
     label: Position.Developer,
-    value: "developer"
+    value: "developer",
   },
   {
     label: Position.Designer,
-    value: "designer"
-  }
+    value: "designer",
+  },
 ];
 
 const STEPS = [
   {
     step: "01",
-    label: "서류 심사"
+    label: "서류 심사",
   },
   {
     step: "02",
-    label: "면접 심사"
+    label: "면접 심사",
   },
   {
     step: "03",
-    label: "최종 합격"
-  }
+    label: "최종 합격",
+  },
 ];
 
 class Gnb extends PureComponent<Props, State> {
@@ -58,7 +58,7 @@ class Gnb extends PureComponent<Props, State> {
     super(props);
     this.state = {
       selectedTab: TAB_ITEMS[0].value,
-      selectedStep: STEPS[0].step
+      selectedStep: STEPS[0].step,
     };
   }
 
@@ -71,14 +71,14 @@ class Gnb extends PureComponent<Props, State> {
         search: qs.stringify({
           ...qs.parse(location.search.slice(1)),
           tab: selectedTab,
-          step: selectedStep
-        })
+          step: selectedStep,
+        }),
       });
     } else {
       const { tab, step } = qs.parse(location.search.slice(1));
       this.setState({
         selectedStep: step as string,
-        selectedTab: tab as string
+        selectedTab: tab as string,
       });
     }
   }
@@ -135,11 +135,11 @@ class Gnb extends PureComponent<Props, State> {
       pathname: location.pathname,
       search: qs.stringify({
         ...qs.parse(location.search.slice(1)),
-        step: item.step
-      })
+        step: item.step,
+      }),
     });
     this.setState({
-      selectedStep: item.step
+      selectedStep: item.step,
     });
   };
 
@@ -149,11 +149,11 @@ class Gnb extends PureComponent<Props, State> {
       pathname: location.pathname,
       search: qs.stringify({
         ...qs.parse(location.search.slice(1)),
-        tab: item.value
-      })
+        tab: item.value,
+      }),
     });
     this.setState({
-      selectedTab: item.value
+      selectedTab: item.value,
     });
   };
 }

@@ -29,16 +29,16 @@ sagaMiddleWare.run(rootSaga);
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: "NanumSquareEB"
+    fontFamily: "NanumSquareEB",
   },
   palette: {
     primary: {
-      main: MAIN_COLOR
+      main: MAIN_COLOR,
     },
     secondary: {
-      main: MAIN_COLOR
-    }
-  }
+      main: MAIN_COLOR,
+    },
+  },
 });
 
 ReactDOM.render(
@@ -49,7 +49,7 @@ ReactDOM.render(
       </MuiThemeProvider>
     </BrowserRouter>
   </Provider>,
-  document.getElementById("root")
+  document.getElementById("root"),
 );
 
 // If you want your app to work offline and load faster, you can change
