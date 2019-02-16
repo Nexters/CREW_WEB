@@ -7,14 +7,15 @@ import { ApplicantComponentType } from "components/ApplicantItem";
 import * as Styled from "./styled";
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
+  onCheck: (applicant: Applicant) => void;
   applicants: Applicant[];
   type: ApplicantComponentType;
 }
 interface State {}
 
 class ApplicantsList extends PureComponent<Props, State> {
-  static defaultProps: Partial<Props> = {
-    type: "default"
+  public static defaultProps: Partial<Props> = {
+    type: "default",
   };
 
   public render() {
@@ -27,6 +28,7 @@ class ApplicantsList extends PureComponent<Props, State> {
               applicant={applicant}
               type={type}
               number={index + 1}
+              onCheck={this.props.onCheck}
             />
           </Styled.Item>
         ))}

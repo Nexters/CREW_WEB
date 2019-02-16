@@ -1,33 +1,37 @@
 import { Action } from "models/Redux";
-import {
-  CREATE_FORM_ITEM,
-  UPDATE_FORM_ITEM,
-  REMOVE_FORM_ITEM
-} from "actionTypes/form";
+import { Applicant } from "models/Applicant";
+import { SAVE_APPLICANTS_LIST } from "actionTypes/applicant";
 import { Question, QuestionType } from "models/Form";
 
 export interface State {
-  questions: Question[];
+  passList: Applicant[];
+  failList: Applicant[];
 }
+
 const initialState: State = {
-  questions: []
+  passList: [],
+  failList: [],
 };
 
 export const reducer = (
   state: State = initialState,
-  action: Action<any>
+  action: Action<any>,
 ): State => {
   switch (action.type) {
-    case CREATE_FORM_ITEM.REQUEST: {
-      const newItem: Question = {
-        type: QuestionType.SingleLine,
-        title: "",
-        placeholder: "",
-        isRequired: false
-      };
+    case SAVE_APPLICANTS_LIST.REQUEST: {
+      const { allList, selectedList } = action.payload;
+
+      const failList = allList.filter((applicant: Applicant) => {
+        const idx = selectedList.findIndex(
+          (item: Applicant) => item.id === applicant.id,
+        );
+        return idx === -1;
+      });
+
       return {
         ...state,
-        questions: [...state.questions, newItem]
+        passList: [...selectedList],
+        failList: [...failList],
       };
     }
     default: {

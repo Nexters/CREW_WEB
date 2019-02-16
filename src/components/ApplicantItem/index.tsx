@@ -8,6 +8,7 @@ import * as Styled from "./styled";
 export type ApplicantComponentType = "default" | "simple";
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
+  onCheck: (applicant: Applicant) => void;
   applicant: Applicant;
   type: ApplicantComponentType;
   number: number;
@@ -15,8 +16,8 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
 interface State {}
 
 class ApplicantItem extends PureComponent<Props, State> {
-  static defaultProps: Partial<Props> = {
-    type: "default"
+  public static defaultProps: Partial<Props> = {
+    type: "default",
   };
 
   public render() {
@@ -74,7 +75,7 @@ class ApplicantItem extends PureComponent<Props, State> {
             <Styled.Circle />
           </Styled.CircleContainer>
           <Styled.Score>80점</Styled.Score>
-          <Checkbox />
+          <Checkbox onChange={this.handleChangeCheckBox} />
         </Fragment>
       );
     } else if (type === "simple") {
@@ -83,6 +84,14 @@ class ApplicantItem extends PureComponent<Props, State> {
           <i className="xi-x xi-close" />
         </Fragment>
       );
+    }
+  };
+
+  private handleChangeCheckBox = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    if (event.target.checked) {
+      this.props.onCheck(this.props.applicant);
     }
   };
 }
