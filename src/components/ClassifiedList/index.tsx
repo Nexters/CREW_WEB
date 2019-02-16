@@ -2,6 +2,7 @@ import React, { PureComponent, HTMLAttributes } from "react";
 
 import { ApplicantList, Paper } from "components";
 import { Applicant } from "models/Applicant";
+import { ApplicantComponentType } from "components/ApplicantItem";
 
 import * as Styled from "./styled";
 
@@ -12,8 +13,8 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
 interface State {}
 
 class ClassifiedList extends PureComponent<Props, State> {
-  static defaultProps: Partial<Props> = {
-    applicants: []
+  public static defaultProps: Partial<Props> = {
+    applicants: [],
   };
 
   public render() {
@@ -25,7 +26,10 @@ class ClassifiedList extends PureComponent<Props, State> {
           <Styled.Count>{applicants.length}</Styled.Count>
         </Styled.Header>
         <Styled.Body>
-          <ApplicantList applicants={applicants} type="simple" />
+          <ApplicantList
+            applicants={applicants}
+            type={ApplicantComponentType.Simple}
+          />
         </Styled.Body>
       </Styled.Container>
     );

@@ -15,7 +15,7 @@ interface State {}
 
 class ApplicantsList extends PureComponent<Props, State> {
   public static defaultProps: Partial<Props> = {
-    type: "default",
+    type: ApplicantComponentType.Default,
   };
 
   public render() {

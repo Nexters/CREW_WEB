@@ -5,19 +5,23 @@ import { Applicant } from "models/Applicant";
 
 import * as Styled from "./styled";
 
-export type ApplicantComponentType = "default" | "simple";
+export enum ApplicantComponentType {
+  Default = "default",
+  Simple = "simple",
+}
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
-  onCheck: (applicant: Applicant) => void;
-  applicant: Applicant;
   type: ApplicantComponentType;
+  applicant: Applicant;
   number: number;
+  onCheck: (applicant: Applicant) => void;
 }
+
 interface State {}
 
 class ApplicantItem extends PureComponent<Props, State> {
   public static defaultProps: Partial<Props> = {
-    type: "default",
+    type: ApplicantComponentType.Default,
   };
 
   public render() {
@@ -80,9 +84,9 @@ class ApplicantItem extends PureComponent<Props, State> {
       );
     } else if (type === "simple") {
       return (
-        <Fragment>
+        <Styled.Xmark>
           <i className="xi-x xi-close" />
-        </Fragment>
+        </Styled.Xmark>
       );
     }
   };
