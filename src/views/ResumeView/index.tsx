@@ -107,7 +107,7 @@ class ResumeView extends PureComponent {
             <Styled.Index>{this.pad(index + 1)}</Styled.Index>
             <div>{item.title}</div>
           </Styled.QuestionTitle>
-          {answer}
+          <Styled.AnswerRight>{answer}</Styled.AnswerRight>
         </Styled.Question>
       );
     });

@@ -84,19 +84,14 @@ export const QuestionTitle = styled.div`
 `;
 
 export const Answer = styled.div`
-  width: 690px;
   color: #615e62;
   font-size: 20px;
   font-family: NanumSquareR;
   line-height: 1.7;
 `;
 
-export const AnswerLabel = styled.label`
-  width: 640px;
-  background: #f9f9f9;
-  padding: 11px 30px;
-  font-family: NanumSquareB;
-  font-size: 20px;
+export const AnswerRight = styled.div`
+  width: 690px;
 `;
 
 export const Bottom = styled.div`
