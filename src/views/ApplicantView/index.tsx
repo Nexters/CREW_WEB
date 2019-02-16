@@ -13,7 +13,7 @@ interface Props {
   applicants: Applicant[];
   passList: Applicant[];
   failList: Applicant[];
-  saveAppicantsList: (allList: Applicant[], selectedList: Applicant[]) => void;
+  saveApplicantsList: (allList: Applicant[], selectedList: Applicant[]) => void;
 }
 
 interface State {
@@ -65,7 +65,7 @@ class ApplicantView extends PureComponent<Props, State> {
   private handleClilckSaveButton = () => {
     const { applicants } = this.props;
     const { selectedList } = this.state;
-    this.props.saveAppicantsList(applicants, selectedList);
+    this.props.saveApplicantsList(applicants, selectedList);
   };
 
   private selectApplicant = (applicant: Applicant) => {
@@ -81,7 +81,7 @@ const mapStateToProps = (state: AppState) => ({
 });
 
 const mapDispatchToProps = {
-  saveAppicantsList: saveApplicantsList.request,
+  saveApplicantsList: saveApplicantsList.request,
 };
 
 const withConnect = connect(
