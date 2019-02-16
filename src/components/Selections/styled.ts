@@ -5,6 +5,10 @@ interface AnswerOptionProps {
   isSelected: Boolean;
 }
 
+interface AnswerLabelProps {
+  width?: string;
+}
+
 export const Answer = styled.div`
   width: 690px;
   color: #615e62;
@@ -14,7 +18,7 @@ export const Answer = styled.div`
 `;
 
 export const AnswerOptionList = styled.ul`
-  width: 690px;
+  width: 100%;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -52,8 +56,8 @@ export const CheckCircle = styled.div`
   font-size: 22px;
 `;
 
-export const AnswerLabel = styled.label`
-  width: 640px;
+export const AnswerLabel = styled.label<AnswerLabelProps>`
+  width: ${(props) => props.width || "640px"};
   background: #f9f9f9;
   padding: 11px 30px;
   font-family: NanumSquareB;

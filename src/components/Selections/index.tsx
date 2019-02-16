@@ -5,12 +5,13 @@ import * as Styled from "./styled";
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   question: SelectQuestion;
+  labelWidth?: string;
 }
 interface State {}
 
 class Selections extends PureComponent<Props, State> {
   public render() {
-    const { question } = this.props;
+    const { question, labelWidth } = this.props;
     return (
       <Styled.AnswerOptionList>
         {question.options.map((option, index) => (
@@ -21,7 +22,9 @@ class Selections extends PureComponent<Props, State> {
             <Styled.CheckCircle>
               {question.value === index && <i className='xi-check-min' />}
             </Styled.CheckCircle>
-            <Styled.AnswerLabel>{option.value}</Styled.AnswerLabel>
+            <Styled.AnswerLabel width={labelWidth}>
+              {option.value}
+            </Styled.AnswerLabel>
           </Styled.AnswerOption>
         ))}
       </Styled.AnswerOptionList>

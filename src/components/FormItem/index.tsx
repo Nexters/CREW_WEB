@@ -44,7 +44,12 @@ class FormItem extends PureComponent<Props, State> {
         return <Styled.MultiLine />;
       }
       case QuestionType.Select: {
-        return <Selections question={mocked[1] as SelectQuestion} />;
+        return (
+          <Selections
+            question={mocked[1] as SelectQuestion}
+            labelWidth='514px'
+          />
+        );
       }
     }
   };
