@@ -24,3 +24,8 @@ export const FormList = styled.ul`
     }
   }
 `;
+
+export const Bottom = styled.div`
+  margin-top: 84px;
+  margin-bottom: 136px;
+`;

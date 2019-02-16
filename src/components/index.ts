@@ -1,3 +1,4 @@
+import AddButton from "./AddButton";
 import ApplicantItem from "./ApplicantItem";
 import ApplicantList from "./ApplicantsList";
 import Button from "./Button";
@@ -10,6 +11,7 @@ import SelectCard from "./SelectCard";
 import Selections from "./Selections";
 
 export {
+  AddButton,
   ApplicantItem,
   ApplicantList,
   Button,
