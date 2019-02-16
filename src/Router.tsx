@@ -21,6 +21,7 @@ const Router = () => (
     <Route exact path="/applicants" component={ApplicantView} />
     <Route exact path="/applicants" component={ApplicantView} />
     <Route exact path="/resume" component={ResumeView} />
+    <Route exact path="/form/manage" component={ManageFormView} />
     <Route exact path="/registerForm" component={RegisterFormView} />
     <Route exact path="/applyStep1" component={ApplyStep1} />
     <Route exact path="/ApplyStep2" component={ApplyStep2} />
