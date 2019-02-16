@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Gnb, Button, ClassifiedList, ApplicantList } from "components";
 import { AppState } from "reducers/rootReducer";
 
-import { saveAppicantsList } from "actions/applicants";
+import { saveApplicantsList } from "actions/applicants";
 import { Applicant } from "models/Applicant";
 import MockedApplicants from "mocks/Applicants";
 
@@ -81,7 +81,7 @@ const mapStateToProps = (state: AppState) => ({
 });
 
 const mapDispatchToProps = {
-  saveAppicantsList: saveAppicantsList.request,
+  saveAppicantsList: saveApplicantsList.request,
 };
 
 const withConnect = connect(

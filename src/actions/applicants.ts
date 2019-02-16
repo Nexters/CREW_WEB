@@ -1,7 +1,7 @@
 import { Applicant } from "models/Applicant";
 import { SAVE_APPLICANTS_LIST } from "actionTypes/applicant";
 
-export const saveAppicantsList = {
+export const saveApplicantsList = {
   request: (allList: Applicant[], selectedList: Applicant[]) => ({
     type: SAVE_APPLICANTS_LIST.REQUEST,
     payload: {
