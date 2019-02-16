@@ -1,21 +1,28 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { YELLOW, GRAY2 } from "constants/colors";
 
-export const Container = styled.div`
+import { Props, ApplicantComponentType } from "./index";
+
+export const Container = styled.div<Props>`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   background: white;
   border-radius: 4px;
-  padding: 10px 20px;
   margin-bottom: 11px;
   transition: 0.3s;
 
-  :hover {
-    box-shadow: 0 0 5px 2px rgba(212, 212, 212, 0.5);
-    transition: 0.3s;
-  }
+  ${(props: Props) =>
+    props.type === ApplicantComponentType.Default &&
+    css`
+      padding: 10px 20px;
+
+      :hover {
+        box-shadow: 0 0 5px 2px rgba(212, 212, 212, 0.5);
+        transition: 0.3s;
+      }
+    `}
 `;
 
 export const Left = styled.div`
@@ -73,4 +80,9 @@ export const Circle = styled.div`
   :last-child {
     margin-right: 0;
   }
+`;
+
+export const Xmark = styled.div`
+  font-size: 10px;
+  color: #d9d9d9;
 `;

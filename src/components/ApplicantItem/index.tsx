@@ -5,18 +5,23 @@ import { Applicant } from "models/Applicant";
 
 import * as Styled from "./styled";
 
-export type ApplicantComponentType = "default" | "simple";
+export enum ApplicantComponentType {
+  Default = "default",
+  Simple = "simple",
+}
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
-  applicant: Applicant;
   type: ApplicantComponentType;
+  applicant: Applicant;
   number: number;
+  onCheck: (applicant: Applicant) => void;
 }
+
 interface State {}
 
 class ApplicantItem extends PureComponent<Props, State> {
-  static defaultProps: Partial<Props> = {
-    type: "default"
+  public static defaultProps: Partial<Props> = {
+    type: ApplicantComponentType.Default,
   };
 
   public render() {
@@ -74,15 +79,23 @@ class ApplicantItem extends PureComponent<Props, State> {
             <Styled.Circle />
           </Styled.CircleContainer>
           <Styled.Score>80점</Styled.Score>
-          <Checkbox />
+          <Checkbox onChange={this.handleChangeCheckBox} />
         </Fragment>
       );
     } else if (type === "simple") {
       return (
-        <Fragment>
+        <Styled.Xmark>
           <i className="xi-x xi-close" />
-        </Fragment>
+        </Styled.Xmark>
       );
+    }
+  };
+
+  private handleChangeCheckBox = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    if (event.target.checked) {
+      this.props.onCheck(this.props.applicant);
     }
   };
 }

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
 import {
   ApplicantView,
   LandingView,
@@ -10,8 +10,8 @@ import {
   RegisterFormView,
   ApplyStep1,
   ApplyStep2,
-  ApplyStep3
-} from 'views';
+  ApplyStep3,
+} from "views";
 
 const Router = () => (
   <Switch>

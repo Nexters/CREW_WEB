@@ -52,21 +52,22 @@ export const Step = styled.div<StepProps>`
 `;
 export const StepNumber = styled.div`
   color: inherit;
-  font-size: 25px;
+  font-size: 20px;
+  margin-bottom: 5px;
 `;
 
 export const StepLabel = styled.div`
   color: inherit;
-  font-size: 15px;
+  font-size: 14px;
 `;
 
 export const Title = styled.h1`
-  font-size: 40px;
+  font-size: 30px;
   margin: 0;
 `;
 
 export const Subtitle = styled.h2`
-  font-size: 16px;
+  font-size: 13px;
   font-weight: normal;
   color: ${MAIN_COLOR};
   margin: 0;

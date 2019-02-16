@@ -6,14 +6,13 @@ export const Container = styled.div`
   height: 40%;
   border: 0.5px solid ${LIGHT_GRAY};
   border-radius: 4px;
-  padding: 22px 10px;
+  padding: 26px 31px;
 `;
 
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 20px;
-  padding: 0 25px;
+  font-size: 13px;
   margin-bottom: 15px;
 `;
 
@@ -23,7 +22,7 @@ export const Count = styled.span`
 
 export const Body = styled.div`
   height: 80%;
-  padding: 0 15px;
+  padding: 0;
   background: white;
   border-radius: 4px;
   overflow-y: scroll;
