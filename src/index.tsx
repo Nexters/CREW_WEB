@@ -32,6 +32,9 @@ const theme = createMuiTheme({
     fontFamily: "NanumSquareEB"
   },
   palette: {
+    primary: {
+      main: MAIN_COLOR
+    },
     secondary: {
       main: MAIN_COLOR
     }
