@@ -23,7 +23,7 @@ export const DescArea = styled.div`
   color: #b8b8b8;
 `;
 
-export const RightContiainer = styled.div`
+export const RightContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
