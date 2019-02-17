@@ -24,7 +24,7 @@ class RegisterFormView extends PureComponent<Props, State> {
             회원가입에 필요한 최소한의 데이터를 입력해주세요.
           </Styled.DescArea>
         </Styled.LeftContiainer>
-        <Styled.RightContiainer>
+        <Styled.RightContainer>
           <Styled.TextinputContainer>
             <TextField
               label="이름"
@@ -52,7 +52,7 @@ class RegisterFormView extends PureComponent<Props, State> {
             />
             <Styled.completeButton>완료</Styled.completeButton>
           </Styled.TextinputContainer>
-        </Styled.RightContiainer>
+        </Styled.RightContainer>
       </Styled.FormView>
     );
   }

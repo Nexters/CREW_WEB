@@ -8,7 +8,7 @@ import {
   ResumeView,
   SelectPositionView,
   RegisterFormView,
-  ApplyStep1,
+  SignUpView,
   ApplyStep2,
   ApplyStep3,
 } from "views";
@@ -22,8 +22,8 @@ const Router = () => (
     <Route exact path="/applicants" component={ApplicantView} />
     <Route exact path="/resume" component={ResumeView} />
     <Route exact path="/form/manage" component={ManageFormView} />
+    <Route exact path="/signup" component={SignUpView} />
     <Route exact path="/registerForm" component={RegisterFormView} />
-    <Route exact path="/applyStep1" component={ApplyStep1} />
     <Route exact path="/ApplyStep2" component={ApplyStep2} />
     <Route exact path="/ApplyStep3" component={ApplyStep3} />
   </Switch>

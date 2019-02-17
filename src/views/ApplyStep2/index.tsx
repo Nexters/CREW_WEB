@@ -23,12 +23,12 @@ class ApplyStep2 extends PureComponent<Props, State> {
             개발-디자인 협업 관련 경험이 있으신가요?
           </Styled.TitleArea>
         </Styled.LeftContiainer>
-        <Styled.RightContiainer>
+        <Styled.RightContainer>
           <Styled.TextinputContainer>
             <Styled.textarea />
             <Styled.btnSave>임시저장</Styled.btnSave>
           </Styled.TextinputContainer>
-        </Styled.RightContiainer>
+        </Styled.RightContainer>
       </Styled.FormView>
     );
   }

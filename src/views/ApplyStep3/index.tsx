@@ -70,7 +70,7 @@ class ApplyStep3 extends PureComponent<Props, State> {
           <Styled.NumberText>03</Styled.NumberText>
           <Styled.TitleArea>주로 사용하는 언어는 무엇인가요?</Styled.TitleArea>
         </Styled.LeftContiainer>
-        <Styled.RightContiainer>
+        <Styled.RightContainer>
           <Styled.TextinputContainer>
             <Styled.AnswerOption key={'1'} isSelected={false}>
               <Styled.CheckCircle>
@@ -99,7 +99,7 @@ class ApplyStep3 extends PureComponent<Props, State> {
 
             <Styled.btnSave>임시저장</Styled.btnSave>
           </Styled.TextinputContainer>
-        </Styled.RightContiainer>
+        </Styled.RightContainer>
       </Styled.FormView>
     );
   }

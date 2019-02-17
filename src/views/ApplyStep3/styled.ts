@@ -30,7 +30,7 @@ export const TitleArea = styled.div`
   margin-left: 215px;
 `;
 
-export const RightContiainer = styled.div`
+export const RightContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
