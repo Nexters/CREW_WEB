@@ -21,6 +21,14 @@ class FormView extends PureComponent<Props, State> {
     return (
       <Styled.FormView>
         <ProgressiveBar index={3} max={7} />
+        <Styled.LeftArrow>
+          <Styled.Arrow className="xi-long-arrow-left" />
+          <Styled.ArrowLabel>이전으로</Styled.ArrowLabel>
+        </Styled.LeftArrow>
+        <Styled.RightArrow>
+          <Styled.Arrow className="xi-long-arrow-right" />
+          <Styled.ArrowLabel>다음으로</Styled.ArrowLabel>
+        </Styled.RightArrow>
         <Styled.Body>
           <Styled.LeftContainer>
             <Styled.NumberText>02</Styled.NumberText>

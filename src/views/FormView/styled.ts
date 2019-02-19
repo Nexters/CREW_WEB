@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { BG_GRAY, WHITE, YELLOW, MAIN_COLOR } from "constants/colors";
 
+export const ARROW_MARGIN = "90px";
+
 export const FormView = styled.div`
   position: relative;
   display: flex;
@@ -8,6 +10,28 @@ export const FormView = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
+`;
+
+export const LeftArrow = styled.div`
+  position: absolute;
+  left: ${ARROW_MARGIN};
+`;
+
+export const RightArrow = styled.div`
+  position: absolute;
+  right: ${ARROW_MARGIN};
+`;
+
+export const Arrow = styled.i`
+  font-size: 50px;
+  color: ${MAIN_COLOR};
+  margin-bottom: 5px;
+`;
+
+export const ArrowLabel = styled.label`
+  display: block;
+  font-family: NanumSquareEB;
+  font-size: 14px;
 `;
 
 export const Body = styled.div`
@@ -18,19 +42,18 @@ export const LeftContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  font-size: 35px;
   width: 460px;
   height: 100vh;
-  margin-right: 265px;
+  margin-right: 150px;
 `;
 
 export const NumberText = styled.div`
   color: ${MAIN_COLOR};
-  font-size: 50px;
   margin-bottom: 15px;
 `;
 
 export const TitleArea = styled.div`
-  font-size: 50px;
   line-height: 1.5;
 `;
 
