@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { BG_GRAY, WHITE, YELLOW, MAIN_COLOR } from 'constants/colors';
+import styled from "styled-components";
+import { BG_GRAY, WHITE, YELLOW, MAIN_COLOR } from "constants/colors";
 
 export const FormView = styled.div`
   display: flex;

@@ -1,17 +1,17 @@
-import React, { PureComponent, ChangeEvent } from 'react';
-import { TextField } from '@material-ui/core';
-import * as Styled from './styled';
+import React, { PureComponent, ChangeEvent } from "react";
+import { TextField } from "@material-ui/core";
+import * as Styled from "./styled";
 
 interface Props {}
 interface State {
   textField: string;
 }
 
-class ApplyStep2 extends PureComponent<Props, State> {
+class FormView extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      textField: ''
+      textField: "",
     };
   }
   public render() {
@@ -36,9 +36,9 @@ class ApplyStep2 extends PureComponent<Props, State> {
   private handleChangeTextField = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     this.setState({
-      textField: value
+      textField: value,
     });
   };
 }
 
-export default ApplyStep2;
+export default FormView;
