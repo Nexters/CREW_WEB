@@ -2,7 +2,7 @@ import { Action } from "models/Redux";
 import {
   CREATE_FORM_ITEM,
   UPDATE_FORM_ITEM,
-  REMOVE_FORM_ITEM
+  REMOVE_FORM_ITEM,
 } from "actionTypes/form";
 import { Question, QuestionType } from "models/Form";
 
@@ -10,12 +10,12 @@ export interface State {
   questions: Question[];
 }
 const initialState: State = {
-  questions: []
+  questions: [],
 };
 
 export const reducer = (
   state: State = initialState,
-  action: Action<any>
+  action: Action<any>,
 ): State => {
   switch (action.type) {
     case CREATE_FORM_ITEM.REQUEST: {
@@ -23,11 +23,11 @@ export const reducer = (
         type: QuestionType.SingleLine,
         title: "",
         placeholder: "",
-        isRequired: false
+        isRequired: false,
       };
       return {
         ...state,
-        questions: [...state.questions, newItem]
+        questions: [...state.questions, newItem],
       };
     }
     default: {

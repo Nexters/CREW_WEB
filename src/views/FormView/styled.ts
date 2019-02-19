@@ -2,28 +2,36 @@ import styled from "styled-components";
 import { BG_GRAY, WHITE, YELLOW, MAIN_COLOR } from "constants/colors";
 
 export const FormView = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+`;
+
+export const Body = styled.div`
   display: flex;
 `;
 
-export const LeftContiainer = styled.div`
+export const LeftContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  width: calc(50%);
-  height: 100vh;
-  background: ${WHITE};
   justify-content: center;
+  flex-direction: column;
+  width: 460px;
+  height: 100vh;
+  margin-right: 265px;
 `;
 
 export const NumberText = styled.div`
-  font-size: 60px;
-  color: #5b61ed;
-  margin-left: 215px;
+  color: ${MAIN_COLOR};
+  font-size: 50px;
+  margin-bottom: 15px;
 `;
 
 export const TitleArea = styled.div`
-  font-size: 60px;
-  color: #423f43;
-  margin-left: 215px;
+  font-size: 50px;
+  line-height: 1.5;
 `;
 
 export const RightContainer = styled.div`
@@ -34,18 +42,25 @@ export const RightContainer = styled.div`
   justify-content: center;
 `;
 
-export const TextinputContainer = styled.div`
+export const AnswerContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
 export const textarea = styled.textarea`
-  width: 700px;
-  height: 490px;
+  box-sizing: border-box;
+  width: 660px;
+  height: 440px;
   border-radius: 4px;
   background: ${BG_GRAY};
-  border: 1px solid #423f43;
+  border: none;
+  font-size: 18px;
+  padding: 30px 28px;
   margin-bottom: 16px;
+
+  :focus {
+    outline: none;
+  }
 `;
 
 export const btnSave = styled.button`
