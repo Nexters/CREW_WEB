@@ -15,11 +15,13 @@ export const FormView = styled.div`
 export const LeftArrow = styled.div`
   position: absolute;
   left: ${ARROW_MARGIN};
+  cursor: pointer;
 `;
 
 export const RightArrow = styled.div`
   position: absolute;
   right: ${ARROW_MARGIN};
+  cursor: pointer;
 `;
 
 export const Arrow = styled.i`

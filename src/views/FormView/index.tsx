@@ -1,10 +1,21 @@
-import React, { PureComponent, ChangeEvent } from "react";
-import { TextField } from "@material-ui/core";
+import React, { PureComponent, ChangeEvent, ComponentType } from "react";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { withRouter, RouteComponentProps } from "react-router-dom";
+import { AppState } from "reducers/rootReducer";
 
 import { ProgressiveBar } from "components";
+import { Question } from "models/Form";
+import { prevQuestion, nextQuestion } from "actions/form";
+
 import * as Styled from "./styled";
 
-interface Props {}
+interface Props extends RouteComponentProps {
+  prevQuestion: () => void;
+  nextQuestion: () => void;
+  questions: Question[];
+  questionNumber: number;
+}
 interface State {
   textField: string;
 }
@@ -18,23 +29,24 @@ class FormView extends PureComponent<Props, State> {
   }
 
   public render() {
+    const { questions, questionNumber } = this.props;
+    const selectedQuestion = questions[questionNumber - 1];
+
     return (
       <Styled.FormView>
-        <ProgressiveBar index={3} max={7} />
-        <Styled.LeftArrow>
+        <ProgressiveBar index={questionNumber} max={questions.length} />
+        <Styled.LeftArrow onClick={this.handleClickArrow("LEFT")}>
           <Styled.Arrow className="xi-long-arrow-left" />
           <Styled.ArrowLabel>이전으로</Styled.ArrowLabel>
         </Styled.LeftArrow>
-        <Styled.RightArrow>
+        <Styled.RightArrow onClick={this.handleClickArrow("RIGHT")}>
           <Styled.Arrow className="xi-long-arrow-right" />
           <Styled.ArrowLabel>다음으로</Styled.ArrowLabel>
         </Styled.RightArrow>
         <Styled.Body>
           <Styled.LeftContainer>
             <Styled.NumberText>02</Styled.NumberText>
-            <Styled.TitleArea>
-              개발-디자인 협업 관련 경험이 있으신가요?
-            </Styled.TitleArea>
+            <Styled.TitleArea>{selectedQuestion.title}</Styled.TitleArea>
           </Styled.LeftContainer>
           <Styled.RightContainer>
             <Styled.AnswerContainer>
@@ -53,6 +65,32 @@ class FormView extends PureComponent<Props, State> {
       textField: value,
     });
   };
+
+  private handleClickArrow = (direction: "LEFT" | "RIGHT") => () => {
+    if (direction === "LEFT") {
+      this.props.prevQuestion();
+    } else if (direction === "RIGHT") {
+      this.props.nextQuestion();
+    }
+  };
 }
 
-export default FormView;
+const mapStateToProps = (state: AppState) => ({
+  questions: state.formReducer.questions,
+  questionNumber: state.formReducer.questionNumber,
+});
+
+const mapDispatchToProps = {
+  prevQuestion,
+  nextQuestion,
+};
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+export default compose(
+  withRouter,
+  withConnect,
+)(FormView) as ComponentType;
