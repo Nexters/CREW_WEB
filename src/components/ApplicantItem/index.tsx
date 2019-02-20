@@ -2,6 +2,7 @@ import React, { PureComponent, HTMLAttributes, Fragment } from "react";
 import { Checkbox } from "@material-ui/core";
 
 import { Applicant } from "models/Applicant";
+import { pad } from "utils/pad";
 
 import * as Styled from "./styled";
 
@@ -33,19 +34,12 @@ class ApplicantItem extends PureComponent<Props, State> {
     );
   }
 
-  private pad = (number: number) => {
-    const base = "000";
-    return (
-      base.slice(0, base.length - number.toString().length) + number.toString()
-    );
-  };
-
   private renderLeftContainer = () => {
     const { type, applicant, number } = this.props;
     if (type === "default") {
       return (
         <Fragment>
-          <Styled.Number>{this.pad(number)}</Styled.Number>
+          <Styled.Number>{pad("000", number)}</Styled.Number>
           <Styled.Thumbnail src={applicant.profileUrl} />
           <div>
             <Styled.Position>{applicant.position}</Styled.Position>
