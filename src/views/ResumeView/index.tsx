@@ -4,10 +4,11 @@ import {
   SingleLineQuestion,
   MultilineQuestion,
   SelectQuestion,
-  QuestionType
+  QuestionType,
 } from "models/Form";
 
 import * as Styled from "./styled";
+import { pad } from "utils/pad";
 
 import MockedQuestions from "mocks/Forms";
 
@@ -31,11 +32,11 @@ class ResumeView extends PureComponent {
           <Styled.Section>
             <Styled.Label>점수 매기기</Styled.Label>
             <Styled.ScoreBoxes>
-              <Styled.ScoreBox type='number' />
-              <Styled.ScoreBox type='number' />
-              <Styled.ScoreBox type='number' />
-              <Styled.ScoreBox type='number' />
-              <Styled.ScoreBox type='number' />
+              <Styled.ScoreBox type="number" />
+              <Styled.ScoreBox type="number" />
+              <Styled.ScoreBox type="number" />
+              <Styled.ScoreBox type="number" />
+              <Styled.ScoreBox type="number" />
             </Styled.ScoreBoxes>
             <Styled.avgScore>
               <span>평균 점수</span> <b>0</b>점
@@ -50,18 +51,10 @@ class ResumeView extends PureComponent {
     );
   }
 
-  private pad = (number: number) => {
-    const based = "00";
-    return (
-      based.slice(0, based.length - number.toString().length) +
-      number.toString()
-    );
-  };
-
   private renderProfile = () => {
     return (
       <Fragment>
-        <Styled.ProfileImage src='https://placehold.it/100x100' />
+        <Styled.ProfileImage src="https://placehold.it/100x100" />
         <Styled.ProfileItem>
           <Styled.ProfileItemLabel>이름</Styled.ProfileItemLabel>
           <Styled.ProfileItemValue>장혜연</Styled.ProfileItemValue>
@@ -104,7 +97,7 @@ class ResumeView extends PureComponent {
       return (
         <Styled.Question key={`${item.title}::${index}`}>
           <Styled.QuestionTitle>
-            <Styled.Index>{this.pad(index + 1)}</Styled.Index>
+            <Styled.Index>{pad("00", index + 1)}</Styled.Index>
             <div>{item.title}</div>
           </Styled.QuestionTitle>
           <Styled.AnswerRight>{answer}</Styled.AnswerRight>
