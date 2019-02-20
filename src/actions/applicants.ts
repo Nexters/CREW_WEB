@@ -2,11 +2,11 @@ import { Applicant } from "models/Applicant";
 import { SAVE_APPLICANTS_LIST } from "actionTypes/applicant";
 
 export const saveApplicantsList = {
-  request: (allList: Applicant[], selectedList: Applicant[]) => ({
+  request: (allList: Applicant[], selectedIds: Set<string>) => ({
     type: SAVE_APPLICANTS_LIST.REQUEST,
     payload: {
       allList,
-      selectedList,
+      selectedIds,
     },
   }),
   success: () => ({

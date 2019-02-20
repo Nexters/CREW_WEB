@@ -19,19 +19,21 @@ export const reducer = (
 ): State => {
   switch (action.type) {
     case SAVE_APPLICANTS_LIST.REQUEST: {
-      const { allList, selectedList } = action.payload;
-      const selectedIds = selectedList.map(
-        (applicant: Applicant) => applicant.id,
-      );
-      const passIdSet = new Set(selectedIds);
-      const failList = allList.filter(
-        (applicant: Applicant) => !passIdSet.has(applicant.id),
-      );
+      const { allList, selectedIds } = action.payload;
+      const passList: Applicant[] = [];
+      const failList: Applicant[] = [];
+      allList.map((applicant: Applicant) => {
+        if (selectedIds.has(applicant.id)) {
+          passList.push(applicant);
+        } else {
+          failList.push(applicant);
+        }
+      });
 
       return {
         ...state,
-        passList: [...selectedList],
-        failList: [...failList],
+        passList,
+        failList,
       };
     }
     default: {

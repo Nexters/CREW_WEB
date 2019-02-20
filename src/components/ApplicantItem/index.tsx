@@ -88,9 +88,7 @@ class ApplicantItem extends PureComponent<Props, State> {
   private handleChangeCheckBox = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    if (event.target.checked) {
-      this.props.onCheck(this.props.applicant);
-    }
+    this.props.onCheck(this.props.applicant);
   };
 }
 

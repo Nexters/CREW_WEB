@@ -13,11 +13,11 @@ interface Props {
   applicants: Applicant[];
   passList: Applicant[];
   failList: Applicant[];
-  saveApplicantsList: (allList: Applicant[], selectedList: Applicant[]) => void;
+  saveApplicantsList: (allList: Applicant[], selectedIds: Set<string>) => void;
 }
 
 interface State {
-  selectedList: Applicant[];
+  selectedApplicantIds: Set<string>;
 }
 
 class ApplicantView extends PureComponent<Props, State> {
@@ -29,7 +29,7 @@ class ApplicantView extends PureComponent<Props, State> {
     super(props);
 
     this.state = {
-      selectedList: [],
+      selectedApplicantIds: new Set(),
     };
   }
 
@@ -68,13 +68,19 @@ class ApplicantView extends PureComponent<Props, State> {
 
   private handleClickSaveButton = () => {
     const { applicants } = this.props;
-    const { selectedList } = this.state;
-    this.props.saveApplicantsList(applicants, selectedList);
+    const { selectedApplicantIds } = this.state;
+    this.props.saveApplicantsList(applicants, selectedApplicantIds);
   };
 
   private selectApplicant = (applicant: Applicant) => {
+    const { selectedApplicantIds } = this.state;
+    if (selectedApplicantIds.has(applicant.id)) {
+      selectedApplicantIds.delete(applicant.id);
+    } else {
+      selectedApplicantIds.add(applicant.id);
+    }
     this.setState({
-      selectedList: [...this.state.selectedList, applicant],
+      selectedApplicantIds: new Set([...selectedApplicantIds.values()]),
     });
   };
 }
