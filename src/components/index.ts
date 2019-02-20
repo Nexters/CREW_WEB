@@ -10,6 +10,7 @@ import Paper from "./Paper";
 import ProgressiveBar from "./ProgressiveBar";
 import SelectCard from "./SelectCard";
 import Selections from "./Selections";
+import Step from "./Step";
 
 export {
   AddButton,
@@ -24,4 +25,5 @@ export {
   ProgressiveBar,
   SelectCard,
   Selections,
+  Step,
 };

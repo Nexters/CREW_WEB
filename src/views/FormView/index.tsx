@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { AppState } from "reducers/rootReducer";
 
-import { ProgressiveBar } from "components";
+import { ProgressiveBar, Step } from "components";
 import { Question } from "models/Form";
 import { prevQuestion, nextQuestion } from "actions/form";
 
@@ -35,6 +35,7 @@ class FormView extends PureComponent<Props, State> {
     return (
       <Styled.FormView>
         <ProgressiveBar index={questionNumber} max={questions.length} />
+        <Step maxStep={questions.length} current={questionNumber} />
         <Styled.LeftArrow onClick={this.handleClickArrow("LEFT")}>
           <Styled.Arrow className="xi-long-arrow-left" />
           <Styled.ArrowLabel>이전으로</Styled.ArrowLabel>
