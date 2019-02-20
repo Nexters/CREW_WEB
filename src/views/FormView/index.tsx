@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { AppState } from "reducers/rootReducer";
 
-import { ProgressiveBar, Step } from "components";
-import { Question } from "models/Form";
+import { ProgressiveBar, Step, Selections } from "components";
+import { Question, QuestionType, SelectQuestion } from "models/Form";
 import { prevQuestion, nextQuestion } from "actions/form";
 import { pad } from "utils/pad";
 
@@ -57,7 +57,7 @@ class FormView extends PureComponent<Props, State> {
               style={{ justifyContent: "flex-end", marginBottom: "66px" }}
             />
             <Styled.AnswerContainer>
-              <Styled.textarea />
+              {this.renderRightAnswer(selectedQuestion)}
               <Styled.btnSave>임시저장</Styled.btnSave>
             </Styled.AnswerContainer>
           </Styled.RightContainer>
@@ -78,6 +78,21 @@ class FormView extends PureComponent<Props, State> {
       this.props.prevQuestion();
     } else if (direction === "RIGHT") {
       this.props.nextQuestion();
+    }
+  };
+
+  private renderRightAnswer = (question: Question) => {
+    switch (question.type) {
+      case QuestionType.SingleLine:
+      case QuestionType.MultiLine: {
+        return <Styled.textarea />;
+      }
+      case QuestionType.Select: {
+        return <Selections question={question as SelectQuestion} />;
+      }
+      default: {
+        return <Styled.textarea />;
+      }
     }
   };
 }
