@@ -34,7 +34,7 @@ class ApplicantView extends PureComponent<Props, State> {
   }
 
   public render() {
-    const { applicants } = this.props;
+    const { applicants, passList, failList } = this.props;
     return (
       <Styled.Container>
         <Gnb title="서류심사" subTitle="지원자관리" />
@@ -51,11 +51,11 @@ class ApplicantView extends PureComponent<Props, State> {
               <button onClick={this.handleClickSaveButton}>save</button>
             </Styled.Left>
             <Styled.Right>
-              <ClassifiedList title="합격자 리스트" applicants={applicants} />
+              <ClassifiedList title="합격자 리스트" applicants={passList} />
               <Styled.RightButtonWrapper>
                 <Button primary>메일 보내기</Button>
               </Styled.RightButtonWrapper>
-              <ClassifiedList title="불합격자 리스트" applicants={applicants} />
+              <ClassifiedList title="불합격자 리스트" applicants={failList} />
               <Styled.RightButtonWrapper>
                 <Button primary>메일 보내기</Button>
               </Styled.RightButtonWrapper>

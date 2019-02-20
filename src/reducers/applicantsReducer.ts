@@ -20,13 +20,13 @@ export const reducer = (
   switch (action.type) {
     case SAVE_APPLICANTS_LIST.REQUEST: {
       const { allList, selectedList } = action.payload;
-
-      const failList = allList.filter((applicant: Applicant) => {
-        const idx = selectedList.findIndex(
-          (item: Applicant) => item.id === applicant.id,
-        );
-        return idx === -1;
-      });
+      const selectedIds = selectedList.map(
+        (applicant: Applicant) => applicant.id,
+      );
+      const passIdSet = new Set(selectedIds);
+      const failList = allList.filter(
+        (applicant: Applicant) => !passIdSet.has(applicant.id),
+      );
 
       return {
         ...state,
