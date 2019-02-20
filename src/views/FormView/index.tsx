@@ -7,6 +7,7 @@ import { AppState } from "reducers/rootReducer";
 import { ProgressiveBar, Step } from "components";
 import { Question } from "models/Form";
 import { prevQuestion, nextQuestion } from "actions/form";
+import { pad } from "utils/pad";
 
 import * as Styled from "./styled";
 
@@ -35,7 +36,7 @@ class FormView extends PureComponent<Props, State> {
     return (
       <Styled.FormView>
         <ProgressiveBar index={questionNumber} max={questions.length} />
-        <Step maxStep={questions.length} current={questionNumber} />
+
         <Styled.LeftArrow onClick={this.handleClickArrow("LEFT")}>
           <Styled.Arrow className="xi-long-arrow-left" />
           <Styled.ArrowLabel>이전으로</Styled.ArrowLabel>
@@ -46,10 +47,15 @@ class FormView extends PureComponent<Props, State> {
         </Styled.RightArrow>
         <Styled.Body>
           <Styled.LeftContainer>
-            <Styled.NumberText>02</Styled.NumberText>
+            <Styled.NumberText>{pad("00", questionNumber)}</Styled.NumberText>
             <Styled.TitleArea>{selectedQuestion.title}</Styled.TitleArea>
           </Styled.LeftContainer>
           <Styled.RightContainer>
+            <Step
+              maxStep={questions.length}
+              current={questionNumber}
+              style={{ justifyContent: "flex-end", marginBottom: "66px" }}
+            />
             <Styled.AnswerContainer>
               <Styled.textarea />
               <Styled.btnSave>임시저장</Styled.btnSave>

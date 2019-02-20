@@ -20,9 +20,10 @@ export const Number = styled.div<NumberProps>`
   width: 35px;
   height: 35px;
   margin-right: 13px;
-  color: #423f43;
   transition: 0.3s;
   border-radius: 50%;
+  color: #4a4a4a;
+  opacity: 0.3;
 
   :last-child {
     margin-right: 0;
@@ -32,7 +33,7 @@ export const Number = styled.div<NumberProps>`
     props.isSelected &&
     css`
       background: ${MAIN_COLOR};
-
       color: white;
+      opacity: 1;
     `}
 `;
