@@ -1,7 +1,7 @@
-import React, { PureComponent, ChangeEvent } from 'react';
-import { TextField } from '@material-ui/core';
-import * as Styled from './styled';
-import { stripLeadingSlash } from 'history/PathUtils';
+import React, { PureComponent, ChangeEvent } from "react";
+import { TextField } from "@material-ui/core";
+import * as Styled from "./styled";
+import { stripLeadingSlash } from "history/PathUtils";
 
 interface Props {}
 interface State {
@@ -12,7 +12,7 @@ class RegisterFormView extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      textField: ''
+      textField: "",
     };
   }
   public render() {
@@ -60,7 +60,7 @@ class RegisterFormView extends PureComponent<Props, State> {
   private handleChangeTextField = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     this.setState({
-      textField: value
+      textField: value,
     });
   };
 }

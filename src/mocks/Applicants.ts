@@ -7,7 +7,7 @@ const applicants: Applicant[] = [
     profileUrl: "https://placehold.it/50x50",
     position: Position.Developer,
     email: "nayunhwan@crew.com",
-    phone: "010-0000-0000"
+    phone: "010-0000-0000",
   },
   {
     id: "김현규0000",
@@ -15,7 +15,7 @@ const applicants: Applicant[] = [
     profileUrl: "https://placehold.it/50x50",
     position: Position.Developer,
     email: "hyungyukim@crew.com",
-    phone: "010-0000-0000"
+    phone: "010-0000-0000",
   },
   {
     id: "김세준0000",
@@ -23,7 +23,7 @@ const applicants: Applicant[] = [
     profileUrl: "https://placehold.it/50x50",
     position: Position.Developer,
     email: "sejunkim@crew.com",
-    phone: "010-0000-0000"
+    phone: "010-0000-0000",
   },
   {
     id: "장혜연0000",
@@ -31,8 +31,8 @@ const applicants: Applicant[] = [
     profileUrl: "https://placehold.it/50x50",
     position: Position.Designer,
     email: "hyjang@crew.com",
-    phone: "010-0000-0000"
-  }
+    phone: "010-0000-0000",
+  },
 ];
 
 export default applicants;

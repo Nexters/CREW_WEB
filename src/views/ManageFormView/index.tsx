@@ -20,7 +20,7 @@ class ManageForm extends PureComponent<Props, State> {
     const { questions } = this.props;
     return (
       <Styled.Container>
-        <Gnb title='서류심사' subTitle='지원자관리' />
+        <Gnb title="서류심사" subTitle="지원자관리" />
         <Styled.Body>
           <Styled.FormList>
             {questions.map((question, idx) => (
@@ -45,16 +45,16 @@ class ManageForm extends PureComponent<Props, State> {
 }
 
 const mapStateToProps = (state: AppState) => ({
-  questions: state.formReducer.questions
+  questions: state.formReducer.questions,
 });
 
 const mapDispatchToProps = {
-  createFormItem: createFormItem.request
+  createFormItem: createFormItem.request,
 };
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 );
 
 export default withConnect(ManageForm);

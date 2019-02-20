@@ -1,13 +1,13 @@
-import React, { PureComponent, ChangeEvent } from 'react';
-import { TextField } from '@material-ui/core';
-import * as Styled from './styled';
+import React, { PureComponent, ChangeEvent } from "react";
+import { TextField } from "@material-ui/core";
+import * as Styled from "./styled";
 // import {
 //   SinglelineQuestion,
 //   MultilineQuestion,
 //   SelectQuestion,
 //   QuestionType
 // } from 'models/Form';
-import MockedQuestions from 'mocks/Forms';
+import MockedQuestions from "mocks/Forms";
 
 // const question = [
 //   {
@@ -34,21 +34,21 @@ import MockedQuestions from 'mocks/Forms';
 
 const options = [
   {
-    key: 'sketch',
-    value: 'Sketch'
+    key: "sketch",
+    value: "Sketch",
   },
   {
-    key: 'xd',
-    value: 'XD'
+    key: "xd",
+    value: "XD",
   },
   {
-    key: 'photoshop',
-    value: 'Photoshop'
+    key: "photoshop",
+    value: "Photoshop",
   },
   {
-    key: 'illustration',
-    value: 'Illustration'
-  }
+    key: "illustration",
+    value: "Illustration",
+  },
 ];
 
 interface Props {}
@@ -60,7 +60,7 @@ class ApplyStep3 extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      textField: ''
+      textField: "",
     };
   }
   public render() {
@@ -72,25 +72,25 @@ class ApplyStep3 extends PureComponent<Props, State> {
         </Styled.LeftContiainer>
         <Styled.RightContainer>
           <Styled.TextinputContainer>
-            <Styled.AnswerOption key={'1'} isSelected={false}>
+            <Styled.AnswerOption key={"1"} isSelected={false}>
               <Styled.CheckCircle>
                 <i className="xi-check-min" />
               </Styled.CheckCircle>
               <Styled.AnswerLabel>JAVA</Styled.AnswerLabel>
             </Styled.AnswerOption>
-            <Styled.AnswerOption key={'1'} isSelected={true}>
+            <Styled.AnswerOption key={"1"} isSelected={true}>
               <Styled.CheckCircle>
                 <i className="xi-check-min" />
               </Styled.CheckCircle>
               <Styled.AnswerLabel>PHYTHON</Styled.AnswerLabel>
             </Styled.AnswerOption>
-            <Styled.AnswerOption key={'1'} isSelected={false}>
+            <Styled.AnswerOption key={"1"} isSelected={false}>
               <Styled.CheckCircle>
                 <i className="xi-check-min" />
               </Styled.CheckCircle>
               <Styled.AnswerLabel>PHP</Styled.AnswerLabel>
             </Styled.AnswerOption>
-            <Styled.AnswerOption key={'1'} isSelected={false}>
+            <Styled.AnswerOption key={"1"} isSelected={false}>
               <Styled.CheckCircle>
                 <i className="xi-check-min" />
               </Styled.CheckCircle>
@@ -107,12 +107,12 @@ class ApplyStep3 extends PureComponent<Props, State> {
   private handleChangeTextField = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     this.setState({
-      textField: value
+      textField: value,
     });
   };
 
   private pad = (number: number) => {
-    const based = '00';
+    const based = "00";
     return (
       based.slice(0, based.length - number.toString().length) +
       number.toString()

@@ -1,5 +1,5 @@
-import React, { PureComponent, HTMLAttributes } from 'react'
-import * as Styled from './styled'
+import React, { PureComponent, HTMLAttributes } from "react"
+import * as Styled from "./styled"
 
 export interface Props extends HTMLAttributes<HTMLButtonElement> {
   src: string

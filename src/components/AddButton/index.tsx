@@ -7,7 +7,7 @@ export interface Props extends HTMLAttributes<HTMLButtonElement> {
 
 export const AddButton = (props: Props) => (
   <Styled.Container {...props}>
-    <i className='xi-plus' />
+    <i className="xi-plus" />
   </Styled.Container>
 );
 

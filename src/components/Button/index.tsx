@@ -7,8 +7,8 @@ export interface Props extends HTMLAttributes<HTMLButtonElement> {
 interface State {}
 
 class Button extends PureComponent<Props, State> {
-  static defaultProps: Partial<Props> = {
-    primary: false
+  public static defaultProps: Partial<Props> = {
+    primary: false,
   };
 
   public render() {

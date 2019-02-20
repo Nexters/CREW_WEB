@@ -20,7 +20,7 @@ class Selections extends PureComponent<Props, State> {
             isSelected={question.value === index}
           >
             <Styled.CheckCircle>
-              {question.value === index && <i className='xi-check-min' />}
+              {question.value === index && <i className="xi-check-min" />}
             </Styled.CheckCircle>
             <Styled.AnswerLabel width={labelWidth}>
               {option.value}

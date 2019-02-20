@@ -20,9 +20,9 @@ class SelectPositionView extends PureComponent {
         </Styled.LeftContainer>
         <Styled.RightContainer>
           <Styled.Body>
-            <Styled.PositionEN color='white'>DEVELOPER</Styled.PositionEN>
-            <Styled.PositionKR color='white'>개발자</Styled.PositionKR>
-            <Styled.Descritpion color='white'>
+            <Styled.PositionEN color="white">DEVELOPER</Styled.PositionEN>
+            <Styled.PositionKR color="white">개발자</Styled.PositionKR>
+            <Styled.Descritpion color="white">
               넥스터즈에서는 UX/UI 어쩌고 저쩌고 넥스터즈에서는 UX/UI 어쩌고
               저쩌고 넥스터즈에서는 UX/UI 어쩌고 저쩌고{" "}
             </Styled.Descritpion>

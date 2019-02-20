@@ -14,7 +14,7 @@ export const Paper: SFC<Props> = (props) => (
 Paper.defaultProps = {
   width: "auto",
   height: "auto",
-  background: "white"
+  background: "white",
 };
 
 export default Paper;
