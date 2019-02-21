@@ -13,7 +13,7 @@ class LoginView extends PureComponent {
   public render() {
     return (
       <Styled.LoginView>
-        <Styled.LeftContiainer />
+        <Styled.LeftContainer />
         <Styled.RightContainer>
           <Styled.RightHeader>
             <Styled.RightHeaderTitle>환영합니다!</Styled.RightHeaderTitle>
