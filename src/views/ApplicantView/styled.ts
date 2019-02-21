@@ -46,6 +46,19 @@ export const LeftHeader = styled.div`
   padding-left: 21px;
 `;
 
+export const LeftButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+
+  > button {
+    margin-right: 18px;
+
+    :last-child {
+      margin-right: 0;
+    }
+  }
+`;
+
 export const Right = styled.div`
   width: 355px;
 `;

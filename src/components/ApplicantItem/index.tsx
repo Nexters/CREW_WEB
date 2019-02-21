@@ -17,6 +17,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   number: number;
   onCheck: (applicant: Applicant) => void;
   onCancel?: (applicant: Applicant) => void;
+  isChecked?: boolean;
 }
 
 interface State {}
@@ -24,6 +25,7 @@ interface State {}
 class ApplicantItem extends PureComponent<Props, State> {
   public static defaultProps: Partial<Props> = {
     type: ApplicantComponentType.Default,
+    isChecked: false,
   };
 
   public render() {
@@ -74,7 +76,10 @@ class ApplicantItem extends PureComponent<Props, State> {
             <Styled.Circle />
           </Styled.CircleContainer>
           <Styled.Score>80점</Styled.Score>
-          <Checkbox onChange={this.handleChangeCheckBox} />
+          <Checkbox
+            checked={this.props.isChecked}
+            onChange={this.handleChangeCheckBox}
+          />
         </Fragment>
       );
     } else if (type === "simple") {
@@ -94,9 +99,7 @@ class ApplicantItem extends PureComponent<Props, State> {
 
   private handleClickXmark = () => {
     const { onCancel, applicant } = this.props;
-    console.log(onCancel);
     if (onCancel) {
-      console.log("TEST2");
       onCancel(applicant);
     }
   };

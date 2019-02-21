@@ -1,8 +1,10 @@
 import React, { PureComponent, HTMLAttributes } from "react";
+import { connect } from "react-redux";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-
 import qs from "querystring";
+
 import { Position } from "models/Applicant";
+import { AppState } from "../../reducers/rootReducer";
 
 import * as Styled from "./styled";
 
@@ -158,4 +160,12 @@ class Gnb extends PureComponent<Props, State> {
   };
 }
 
-export default withRouter(Gnb);
+const mapStateToProps = (state: AppState) => ({});
+const mapDispatchToProps = {};
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+export default withRouter(withConnect(Gnb));

@@ -1,23 +1,29 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, ComponentType } from "react";
+import { compose } from "redux";
 import { connect } from "react-redux";
+import { withRouter, RouteComponentProps } from "react-router-dom";
+import url from "url";
+import qs from "querystring";
+
 import { Gnb, Button, ClassifiedList, ApplicantList } from "components";
 import { AppState } from "reducers/rootReducer";
 
-import { saveApplicantsList } from "actions/applicants";
-import { Applicant } from "models/Applicant";
+import { updateApplicantList } from "actions/applicants";
+import { Applicant, Position } from "models/Applicant";
 import MockedApplicants from "mocks/Applicants";
 
 import * as Styled from "./styled";
 
-interface Props {
+interface Props extends RouteComponentProps {
   applicants: Applicant[];
   passList: Applicant[];
   failList: Applicant[];
-  saveApplicantsList: (allList: Applicant[], selectedIds: Set<string>) => void;
+  updateApplicantList: (allList: Applicant[], selectedIds: Set<string>) => void;
 }
 
 interface State {
-  selectedApplicantIds: Set<string>;
+  checkedIdSet: Set<string>;
+  filteredApplicants: Applicant[];
 }
 
 class ApplicantView extends PureComponent<Props, State> {
@@ -29,12 +35,24 @@ class ApplicantView extends PureComponent<Props, State> {
     super(props);
 
     this.state = {
-      selectedApplicantIds: new Set(),
+      checkedIdSet: new Set(),
+      filteredApplicants: this.filterApplicant(props.applicants),
     };
   }
 
+  public componentDidUpdate(prevProps: Props) {
+    const isChangedApplicants = prevProps.applicants !== this.props.applicants;
+    if (isChangedApplicants) {
+      this.setState({
+        filteredApplicants: this.filterApplicant(this.props.applicants),
+      });
+    }
+  }
+
   public render() {
-    const { applicants, passList, failList } = this.props;
+    const { passList, failList } = this.props;
+    const { checkedIdSet, filteredApplicants } = this.state;
+
     return (
       <Styled.Container>
         <Gnb title="서류심사" subTitle="지원자관리" />
@@ -45,10 +63,16 @@ class ApplicantView extends PureComponent<Props, State> {
                 순서, 프로필, 이름, 평가상태, 점수
               </Styled.LeftHeader>
               <ApplicantList
-                applicants={applicants}
+                applicants={filteredApplicants}
+                checkedIdSet={checkedIdSet}
                 onCheck={this.selectApplicant}
               />
-              <button onClick={this.handleClickSaveButton}>save</button>
+              <Styled.LeftButtonContainer>
+                <Button onClick={this.handleClickSaveButton}>초기화하기</Button>
+                <Button onClick={this.handleClickSaveButton} primary>
+                  저장하기
+                </Button>
+              </Styled.LeftButtonContainer>
             </Styled.Left>
             <Styled.Right>
               <ClassifiedList
@@ -74,30 +98,56 @@ class ApplicantView extends PureComponent<Props, State> {
     );
   }
 
+  private filterApplicant = (applicants: Applicant[]) => {
+    const { history } = this.props;
+    const query = qs.parse(url.parse(history.location.search).query || "");
+    switch (query.tab) {
+      case "developer": {
+        return applicants.filter(
+          (applicant) => applicant.position === Position.Developer,
+        );
+      }
+      case "designer": {
+        return applicants.filter(
+          (applicant) => applicant.position === Position.Designer,
+        );
+      }
+      default: {
+        return applicants.filter(
+          (applicant) => applicant.position === Position.Developer,
+        );
+      }
+    }
+  };
+
   private handleClickSaveButton = () => {
-    const { applicants } = this.props;
-    const { selectedApplicantIds } = this.state;
-    this.props.saveApplicantsList(applicants, selectedApplicantIds);
+    const { checkedIdSet, filteredApplicants } = this.state;
+    this.props.updateApplicantList(filteredApplicants, checkedIdSet);
   };
 
   private selectApplicant = (applicant: Applicant) => {
-    const { selectedApplicantIds } = this.state;
-    if (selectedApplicantIds.has(applicant.id)) {
-      selectedApplicantIds.delete(applicant.id);
+    const { checkedIdSet } = this.state;
+    if (checkedIdSet.has(applicant.id)) {
+      checkedIdSet.delete(applicant.id);
     } else {
-      selectedApplicantIds.add(applicant.id);
+      checkedIdSet.add(applicant.id);
     }
     this.setState({
-      selectedApplicantIds: new Set([...selectedApplicantIds.values()]),
+      checkedIdSet: new Set([...checkedIdSet.values()]),
     });
   };
 
   private cancelSelectApplicant = (applicant: Applicant) => {
-    const { selectedApplicantIds } = this.state;
-    selectedApplicantIds.delete(applicant.id);
+    const { filteredApplicants, checkedIdSet } = this.state;
+    if (checkedIdSet.has(applicant.id)) {
+      checkedIdSet.delete(applicant.id);
+    } else {
+      checkedIdSet.add(applicant.id);
+    }
     this.setState({
-      selectedApplicantIds: new Set([...selectedApplicantIds.values()]),
+      checkedIdSet: new Set([...checkedIdSet.values()]),
     });
+    this.props.updateApplicantList(filteredApplicants, checkedIdSet);
   };
 }
 
@@ -107,7 +157,7 @@ const mapStateToProps = (state: AppState) => ({
 });
 
 const mapDispatchToProps = {
-  saveApplicantsList: saveApplicantsList.request,
+  updateApplicantList: updateApplicantList.request,
 };
 
 const withConnect = connect(
@@ -115,4 +165,7 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-export default withConnect(ApplicantView);
+export default compose(
+  withRouter,
+  withConnect,
+)(ApplicantView) as ComponentType;

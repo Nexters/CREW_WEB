@@ -1,16 +1,17 @@
 import { Action } from "models/Redux";
-import { Applicant } from "models/Applicant";
-import { SAVE_APPLICANTS_LIST } from "actionTypes/applicant";
-import { Question, QuestionType } from "models/Form";
+import { Applicant, Position } from "models/Applicant";
+import { UPDATE_APPLICANTS_LIST, CHANGE_POSITION } from "actionTypes/applicant";
 
 export interface State {
   passList: Applicant[];
   failList: Applicant[];
+  selectedPosition: Position;
 }
 
 const initialState: State = {
   passList: [],
   failList: [],
+  selectedPosition: Position.Developer,
 };
 
 export const reducer = (
@@ -18,7 +19,14 @@ export const reducer = (
   action: Action<any>,
 ): State => {
   switch (action.type) {
-    case SAVE_APPLICANTS_LIST.REQUEST: {
+    case CHANGE_POSITION: {
+      const { position } = action.payload;
+      return {
+        ...state,
+        selectedPosition: position,
+      };
+    }
+    case UPDATE_APPLICANTS_LIST.REQUEST: {
       const { allList, selectedIds } = action.payload;
       const passList: Applicant[] = [];
       const failList: Applicant[] = [];
