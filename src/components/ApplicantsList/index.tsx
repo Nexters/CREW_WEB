@@ -8,6 +8,7 @@ import * as Styled from "./styled";
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   onCheck: (applicant: Applicant) => void;
+  onCancel?: (applicant: Applicant) => void;
   applicants: Applicant[];
   type: ApplicantComponentType;
 }
@@ -29,6 +30,7 @@ class ApplicantsList extends PureComponent<Props, State> {
               type={type}
               number={index + 1}
               onCheck={this.props.onCheck}
+              onCancel={this.props.onCancel}
             />
           </Styled.Item>
         ))}

@@ -51,11 +51,19 @@ class ApplicantView extends PureComponent<Props, State> {
               <button onClick={this.handleClickSaveButton}>save</button>
             </Styled.Left>
             <Styled.Right>
-              <ClassifiedList title="합격자 리스트" applicants={passList} />
+              <ClassifiedList
+                title="합격자 리스트"
+                applicants={passList}
+                onCancel={this.cancelSelectApplicant}
+              />
               <Styled.RightButtonWrapper>
                 <Button primary>메일 보내기</Button>
               </Styled.RightButtonWrapper>
-              <ClassifiedList title="불합격자 리스트" applicants={failList} />
+              <ClassifiedList
+                title="불합격자 리스트"
+                applicants={failList}
+                onCancel={this.cancelSelectApplicant}
+              />
               <Styled.RightButtonWrapper>
                 <Button primary>메일 보내기</Button>
               </Styled.RightButtonWrapper>
@@ -79,6 +87,14 @@ class ApplicantView extends PureComponent<Props, State> {
     } else {
       selectedApplicantIds.add(applicant.id);
     }
+    this.setState({
+      selectedApplicantIds: new Set([...selectedApplicantIds.values()]),
+    });
+  };
+
+  private cancelSelectApplicant = (applicant: Applicant) => {
+    const { selectedApplicantIds } = this.state;
+    selectedApplicantIds.delete(applicant.id);
     this.setState({
       selectedApplicantIds: new Set([...selectedApplicantIds.values()]),
     });

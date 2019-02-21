@@ -16,6 +16,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   applicant: Applicant;
   number: number;
   onCheck: (applicant: Applicant) => void;
+  onCancel?: (applicant: Applicant) => void;
 }
 
 interface State {}
@@ -78,7 +79,7 @@ class ApplicantItem extends PureComponent<Props, State> {
       );
     } else if (type === "simple") {
       return (
-        <Styled.Xmark>
+        <Styled.Xmark onClick={this.handleClickXmark}>
           <i className="xi-x xi-close" />
         </Styled.Xmark>
       );
@@ -89,6 +90,15 @@ class ApplicantItem extends PureComponent<Props, State> {
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     this.props.onCheck(this.props.applicant);
+  };
+
+  private handleClickXmark = () => {
+    const { onCancel, applicant } = this.props;
+    console.log(onCancel);
+    if (onCancel) {
+      console.log("TEST2");
+      onCancel(applicant);
+    }
   };
 }
 
