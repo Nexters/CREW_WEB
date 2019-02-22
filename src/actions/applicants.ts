@@ -1,5 +1,9 @@
 import { History } from "history";
-import { UPDATE_APPLICANTS_LIST, CHANGE_POSITION } from "actionTypes/applicant";
+import {
+  UPDATE_APPLICANTS_LIST,
+  CHANGE_POSITION,
+  CLEAR_APPLICANTS_LIST,
+} from "actionTypes/applicant";
 import { Position } from "models/Applicant";
 
 export const updateApplicantList = {
@@ -14,6 +18,18 @@ export const updateApplicantList = {
   }),
   failure: () => ({
     type: UPDATE_APPLICANTS_LIST.FAILURE,
+  }),
+};
+
+export const clearApplicantList = {
+  request: () => ({
+    type: CLEAR_APPLICANTS_LIST.REQUEST,
+  }),
+  success: () => ({
+    type: CLEAR_APPLICANTS_LIST.SUCCESS,
+  }),
+  failure: () => ({
+    type: CLEAR_APPLICANTS_LIST.FAILURE,
   }),
 };
 

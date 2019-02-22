@@ -8,7 +8,7 @@ import qs from "querystring";
 import { Gnb, Button, ClassifiedList, ApplicantList } from "components";
 import { AppState } from "reducers/rootReducer";
 
-import { updateApplicantList } from "actions/applicants";
+import { updateApplicantList, clearApplicantList } from "actions/applicants";
 import { Applicant, Position } from "models/Applicant";
 
 import * as Styled from "./styled";
@@ -18,6 +18,7 @@ interface Props extends RouteComponentProps {
   passList: Applicant[];
   failList: Applicant[];
   updateApplicantList: (selectedIds: Set<string>) => void;
+  clearApplicantList: () => void;
 }
 
 interface State {
@@ -63,7 +64,9 @@ class ApplicantView extends PureComponent<Props, State> {
                 onCheck={this.selectApplicant}
               />
               <Styled.LeftButtonContainer>
-                <Button onClick={this.handleClickSaveButton}>초기화하기</Button>
+                <Button onClick={this.handleClickClearButton}>
+                  초기화하기
+                </Button>
                 <Button onClick={this.handleClickSaveButton} primary>
                   저장하기
                 </Button>
@@ -117,6 +120,14 @@ class ApplicantView extends PureComponent<Props, State> {
     }
   };
 
+  private handleClickClearButton = () => {
+    const newSet = new Set();
+    this.setState({
+      checkedIdSet: new Set(),
+    });
+    this.props.clearApplicantList();
+  };
+
   private handleClickSaveButton = () => {
     const { checkedIdSet } = this.state;
     this.props.updateApplicantList(checkedIdSet);
@@ -156,6 +167,7 @@ const mapStateToProps = (state: AppState) => ({
 
 const mapDispatchToProps = {
   updateApplicantList: updateApplicantList.request,
+  clearApplicantList: clearApplicantList.request,
 };
 
 const withConnect = connect(

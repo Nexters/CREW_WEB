@@ -1,6 +1,10 @@
 import { Action } from "models/Redux";
 import { Applicant, Position } from "models/Applicant";
-import { UPDATE_APPLICANTS_LIST, CHANGE_POSITION } from "actionTypes/applicant";
+import {
+  UPDATE_APPLICANTS_LIST,
+  CHANGE_POSITION,
+  CLEAR_APPLICANTS_LIST,
+} from "actionTypes/applicant";
 import { History } from "history";
 
 import { pushUrlQuery } from "utils/historyHelper";
@@ -69,6 +73,14 @@ export const reducer = (
         ...state,
         passList,
         failList,
+      };
+    }
+
+    case CLEAR_APPLICANTS_LIST.REQUEST: {
+      return {
+        ...state,
+        passList: [],
+        failList: [],
       };
     }
     default: {
