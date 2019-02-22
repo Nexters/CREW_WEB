@@ -3,6 +3,7 @@ import { Checkbox } from "@material-ui/core";
 
 import { Applicant } from "models/Applicant";
 import { pad } from "utils/pad";
+import { getPositionKORLabel } from "utils/position";
 
 import * as Styled from "./styled";
 
@@ -45,7 +46,9 @@ class ApplicantItem extends PureComponent<Props, State> {
           <Styled.Number>{pad("000", number)}</Styled.Number>
           <Styled.Thumbnail src={applicant.profileUrl} />
           <div>
-            <Styled.Position>{applicant.position}</Styled.Position>
+            <Styled.Position>
+              {getPositionKORLabel(applicant.position)}
+            </Styled.Position>
             <Styled.Name>{applicant.name}</Styled.Name>
           </div>
         </Fragment>

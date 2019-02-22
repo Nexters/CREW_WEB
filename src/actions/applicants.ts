@@ -1,3 +1,4 @@
+import { History } from "history";
 import { UPDATE_APPLICANTS_LIST, CHANGE_POSITION } from "actionTypes/applicant";
 import { Applicant, Position } from "models/Applicant";
 
@@ -17,9 +18,10 @@ export const updateApplicantList = {
   }),
 };
 
-export const changePosition = (position: Position) => ({
+export const changePosition = (position: Position, history: History<any>) => ({
   type: CHANGE_POSITION,
   payload: {
     position,
+    history,
   },
 });

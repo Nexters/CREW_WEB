@@ -1,6 +1,8 @@
 import { Action } from "models/Redux";
 import { Applicant, Position } from "models/Applicant";
 import { UPDATE_APPLICANTS_LIST, CHANGE_POSITION } from "actionTypes/applicant";
+import { History } from "history";
+import qs from "querystring";
 
 export interface State {
   passList: Applicant[];
@@ -20,7 +22,19 @@ export const reducer = (
 ): State => {
   switch (action.type) {
     case CHANGE_POSITION: {
-      const { position } = action.payload;
+      const {
+        position,
+        history,
+      }: { position: Position; history: History<any> } = action.payload;
+
+      history.push({
+        pathname: history.location.pathname,
+        search: qs.stringify({
+          ...qs.parse(history.location.search.slice(1)),
+          tab: position,
+        }),
+      });
+
       return {
         ...state,
         selectedPosition: position,

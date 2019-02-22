@@ -1,27 +1,30 @@
 import React, { PureComponent, HTMLAttributes } from "react";
 import { connect } from "react-redux";
 import { withRouter, RouteComponentProps } from "react-router-dom";
+import { History } from "history";
 import qs from "querystring";
 
 import { Position } from "models/Applicant";
-import { AppState } from "../../reducers/rootReducer";
+import { changePosition } from "actions/applicants";
+import { AppState } from "reducers/rootReducer";
 
 import * as Styled from "./styled";
 
 export interface Props
   extends HTMLAttributes<HTMLDivElement>,
     RouteComponentProps {
+  changePosition: (position: Position, history: History<any>) => void;
+  selectedPosition: Position;
   subTitle: string;
   title: string;
 }
 interface State {
-  selectedTab: string;
   selectedStep: string;
 }
 
 interface TabItem {
-  label: Position;
-  value: string;
+  label: string;
+  value: Position;
 }
 
 interface Step {
@@ -31,12 +34,12 @@ interface Step {
 
 const TAB_ITEMS: TabItem[] = [
   {
-    label: Position.Developer,
-    value: "developer",
+    label: "개발자",
+    value: Position.Developer,
   },
   {
-    label: Position.Designer,
-    value: "designer",
+    label: "디자이너",
+    value: Position.Designer,
   },
 ];
 
@@ -59,20 +62,18 @@ class Gnb extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      selectedTab: TAB_ITEMS[0].value,
       selectedStep: STEPS[0].step,
     };
   }
 
   public componentDidMount() {
     const { history, location } = this.props;
-    const { selectedTab, selectedStep } = this.state;
+    const { selectedStep } = this.state;
     if (location.search === "") {
       history.replace({
         pathname: location.pathname,
         search: qs.stringify({
           ...qs.parse(location.search.slice(1)),
-          tab: selectedTab,
           step: selectedStep,
         }),
       });
@@ -80,7 +81,6 @@ class Gnb extends PureComponent<Props, State> {
       const { tab, step } = qs.parse(location.search.slice(1));
       this.setState({
         selectedStep: step as string,
-        selectedTab: tab as string,
       });
     }
   }
@@ -115,14 +115,14 @@ class Gnb extends PureComponent<Props, State> {
   }
 
   private renderTab = () => {
-    const { selectedTab } = this.state;
+    const { selectedPosition } = this.props;
     return (
       <Styled.Tab>
         {TAB_ITEMS.map((item) => (
           <Styled.TabItem
             key={item.label}
             onClick={this.handleClickTabItem(item)}
-            isSelected={item.value === selectedTab}
+            isSelected={item.value === selectedPosition}
           >
             {item.label}
           </Styled.TabItem>
@@ -146,22 +146,17 @@ class Gnb extends PureComponent<Props, State> {
   };
 
   private handleClickTabItem = (item: TabItem) => () => {
-    const { history, location } = this.props;
-    history.push({
-      pathname: location.pathname,
-      search: qs.stringify({
-        ...qs.parse(location.search.slice(1)),
-        tab: item.value,
-      }),
-    });
-    this.setState({
-      selectedTab: item.value,
-    });
+    const { history } = this.props;
+    this.props.changePosition(item.value, history);
   };
 }
 
-const mapStateToProps = (state: AppState) => ({});
-const mapDispatchToProps = {};
+const mapStateToProps = (state: AppState) => ({
+  selectedPosition: state.applicantReducer.selectedPosition,
+});
+const mapDispatchToProps = {
+  changePosition,
+};
 
 const withConnect = connect(
   mapStateToProps,
