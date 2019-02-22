@@ -46,6 +46,12 @@ export const LeftHeader = styled.div`
   padding-left: 21px;
 `;
 
+export const LeftBody = styled.div`
+  padding: 5px;
+  height: 80%;
+  overflow-y: scroll;
+`;
+
 export const LeftButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -68,6 +74,7 @@ export const RightWrapper = styled.div`
   flex-direction: column;
   align-items: flex-end;
   margin-bottom: 20px;
+  height: 40%;
 
   :last-child {
     margin-bottom: 0;

@@ -58,11 +58,13 @@ class ApplicantView extends PureComponent<Props, State> {
               <Styled.LeftHeader>
                 순서, 프로필, 이름, 평가상태, 점수
               </Styled.LeftHeader>
-              <ApplicantList
-                applicants={filteredApplicants}
-                checkedIdSet={checkedIdSet}
-                onCheck={this.selectApplicant}
-              />
+              <Styled.LeftBody>
+                <ApplicantList
+                  applicants={filteredApplicants}
+                  checkedIdSet={checkedIdSet}
+                  onCheck={this.selectApplicant}
+                />
+              </Styled.LeftBody>
               <Styled.LeftButtonContainer>
                 <Button onClick={this.handleClickClearButton}>
                   초기화하기

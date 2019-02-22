@@ -12,8 +12,52 @@ import { pad } from "utils/pad";
 
 import MockedQuestions from "mocks/Forms";
 
-class ResumeView extends PureComponent {
+interface Score {
+  score: number;
+  comment: string;
+}
+
+export interface Props {}
+interface State {
+  scores: Score[];
+}
+
+class ResumeView extends PureComponent<Props, State> {
+  public constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      scores: [
+        {
+          score: 0,
+          comment: "",
+        },
+        {
+          score: 0,
+          comment: "",
+        },
+        {
+          score: 0,
+          comment: "",
+        },
+        {
+          score: 0,
+          comment: "",
+        },
+        {
+          score: 0,
+          comment: "",
+        },
+      ],
+    };
+  }
+
   public render() {
+    let sum = 0;
+    const { scores } = this.state;
+    const notZero = scores.filter((score) => score.score !== 0).length;
+    scores.forEach((score) => (sum += score.score));
+
     return (
       <Styled.Container>
         <Styled.Header>
@@ -25,21 +69,22 @@ class ResumeView extends PureComponent {
         </Styled.Body>
         <Styled.Bottom>
           <Styled.Section>
-            <Styled.Label>코멘트</Styled.Label>
-            <Styled.Comment />
-            <Button primary>저장하기</Button>
-          </Styled.Section>
-          <Styled.Section>
             <Styled.Label>점수 매기기</Styled.Label>
             <Styled.ScoreBoxes>
-              <Styled.ScoreBox type="number" />
-              <Styled.ScoreBox type="number" />
-              <Styled.ScoreBox type="number" />
-              <Styled.ScoreBox type="number" />
-              <Styled.ScoreBox type="number" />
+              {this.state.scores.map((score: Score, index: number) => (
+                <Styled.ScoreRow key={index}>
+                  <Styled.ScoreBox
+                    type="number"
+                    value={score.score}
+                    onChange={this.handleChangeScoreBox(index)}
+                  />
+                  <Styled.Comment />
+                </Styled.ScoreRow>
+              ))}
             </Styled.ScoreBoxes>
             <Styled.avgScore>
-              <span>평균 점수</span> <b>0</b>점
+              <span>평균 점수</span>{" "}
+              <b>{Math.floor((sum / (notZero || 1)) * 100) / 100}</b>점
             </Styled.avgScore>
             <Button primary>저장하기</Button>
           </Styled.Section>
@@ -50,6 +95,22 @@ class ResumeView extends PureComponent {
       </Styled.Container>
     );
   }
+
+  private handleChangeScoreBox = (index: number) => (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const { value } = e.target;
+    this.setState({
+      scores: [
+        ...this.state.scores.slice(0, index),
+        {
+          score: Number(value),
+          comment: this.state.scores[index].comment,
+        },
+        ...this.state.scores.slice(index + 1),
+      ],
+    });
+  };
 
   private renderProfile = () => {
     return (

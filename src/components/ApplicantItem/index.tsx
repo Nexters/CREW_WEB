@@ -58,7 +58,9 @@ class ApplicantItem extends PureComponent<Props, State> {
         <Fragment>
           <Styled.Thumbnail src={applicant.profileUrl} />
           <div>
-            <Styled.Position>{applicant.position}</Styled.Position>
+            <Styled.Position>
+              {getPositionKORLabel(applicant.position)}
+            </Styled.Position>
             <Styled.Name>{applicant.name}</Styled.Name>
           </div>
         </Fragment>

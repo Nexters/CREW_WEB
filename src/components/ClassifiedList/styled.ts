@@ -3,7 +3,9 @@ import { MAIN_COLOR, LIGHT_GRAY } from "constants/colors";
 
 export const Container = styled.div`
   width: 355px;
-  height: 40%;
+  height: 80%;
+  max-height: 80%;
+  overflow-y: scroll;
   border: 0.5px solid ${LIGHT_GRAY};
   border-radius: 4px;
   padding: 26px 31px;

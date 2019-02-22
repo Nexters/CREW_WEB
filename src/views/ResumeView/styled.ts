@@ -112,18 +112,33 @@ export const Label = styled.h2`
 `;
 
 export const Comment = styled.textarea`
-  width: 100%;
-  height: 277px;
+  width: 80%;
+  height: 54px;
   border-radius: 4px;
   background: #f9f9f9;
   border: none;
-  margin-bottom: 16px;
+  resize: none;
+  padding: 10px;
+  font-size: 18px;
+
+  :focus {
+    outline: none;
+  }
 `;
 
 export const ScoreBoxes = styled.div`
   width: 100%;
+`;
+
+export const ScoreRow = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  margin-bottom: 20px;
+
+  :last-child {
+    margin-bottom: 0;
+  }
 `;
 
 export const ScoreBox = styled.input`
