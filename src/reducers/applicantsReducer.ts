@@ -128,7 +128,7 @@ export const reducer = (
             avg: Math.floor((sum / (notZero || 1)) * 100) / 100,
           },
           ...applicants.slice(applicantIdx + 1),
-        ],
+        ].sort((a, b) => b.avg - a.avg),
       };
     }
     default: {
