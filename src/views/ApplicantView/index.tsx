@@ -10,7 +10,6 @@ import { AppState } from "reducers/rootReducer";
 
 import { updateApplicantList } from "actions/applicants";
 import { Applicant, Position } from "models/Applicant";
-import MockedApplicants from "mocks/Applicants";
 
 import * as Styled from "./styled";
 
@@ -27,10 +26,6 @@ interface State {
 }
 
 class ApplicantView extends PureComponent<Props, State> {
-  public static defaultProps: Partial<Props> = {
-    applicants: MockedApplicants,
-  };
-
   public constructor(props: Props) {
     super(props);
 
@@ -152,6 +147,7 @@ class ApplicantView extends PureComponent<Props, State> {
 }
 
 const mapStateToProps = (state: AppState) => ({
+  applicants: state.applicantReducer.filteredApplicants,
   passList: state.applicantReducer.passList,
   failList: state.applicantReducer.failList,
 });

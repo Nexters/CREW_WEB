@@ -4,13 +4,21 @@ import { UPDATE_APPLICANTS_LIST, CHANGE_POSITION } from "actionTypes/applicant";
 import { History } from "history";
 import qs from "querystring";
 
+import { pushUrlQuery } from "utils/historyHelper";
+
+import MockedApplicants from "mocks/Applicants";
+
 export interface State {
+  applicants: Applicant[];
+  filteredApplicants: Applicant[];
   passList: Applicant[];
   failList: Applicant[];
   selectedPosition: Position;
 }
 
 const initialState: State = {
+  applicants: MockedApplicants,
+  filteredApplicants: [],
   passList: [],
   failList: [],
   selectedPosition: Position.Developer,
@@ -26,18 +34,20 @@ export const reducer = (
         position,
         history,
       }: { position: Position; history: History<any> } = action.payload;
-
-      history.push({
-        pathname: history.location.pathname,
-        search: qs.stringify({
-          ...qs.parse(history.location.search.slice(1)),
-          tab: position,
-        }),
+      pushUrlQuery(history, {
+        tab: position,
       });
+
+      const filteredApplicants = state.applicants.filter(
+        (applicant) => applicant.position === position,
+      );
 
       return {
         ...state,
         selectedPosition: position,
+        filteredApplicants: [...filteredApplicants],
+        passList: [],
+        failList: [],
       };
     }
     case UPDATE_APPLICANTS_LIST.REQUEST: {

@@ -7,6 +7,7 @@ import qs from "querystring";
 import { Position } from "models/Applicant";
 import { changePosition } from "actions/applicants";
 import { AppState } from "reducers/rootReducer";
+import { replaceUrlQuery, getQuery } from "utils/historyHelper";
 
 import * as Styled from "./styled";
 
@@ -70,18 +71,16 @@ class Gnb extends PureComponent<Props, State> {
     const { history, location } = this.props;
     const { selectedStep } = this.state;
     if (location.search === "") {
-      history.replace({
-        pathname: location.pathname,
-        search: qs.stringify({
-          ...qs.parse(location.search.slice(1)),
-          step: selectedStep,
-        }),
+      replaceUrlQuery(history, {
+        step: selectedStep,
+        tab: Position.Developer,
       });
     } else {
-      const { tab, step } = qs.parse(location.search.slice(1));
+      const { tab, step } = getQuery(history.location);
       this.setState({
         selectedStep: step as string,
       });
+      this.props.changePosition(tab as Position, history);
     }
   }
 
