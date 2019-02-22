@@ -30,6 +30,7 @@ sagaMiddleWare.run(rootSaga);
 const theme = createMuiTheme({
   typography: {
     fontFamily: "NanumSquareEB",
+    useNextVariants: true,
   },
   palette: {
     primary: {

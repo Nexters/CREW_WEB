@@ -1,16 +1,18 @@
 import styled from "styled-components";
-import { BG_GRAY, GRAY2 } from "constants/colors";
+import { GRAY2 } from "constants/colors";
+import BG from "images/pattern.svg";
 
-const RIHGT_WIDTH = "524px";
+const RIGHT_WIDTH = "524px";
 
 export const LoginView = styled.div`
   display: flex;
 `;
 
-export const LeftContiainer = styled.div`
-  width: calc(100% - ${RIHGT_WIDTH});
+export const LeftContainer = styled.div`
+  width: calc(100% - ${RIGHT_WIDTH});
   height: 100vh;
-  background: ${BG_GRAY};
+  background-image: url(${BG});
+  background-size: cover;
 `;
 
 export const RightContainer = styled.div`
@@ -19,7 +21,7 @@ export const RightContainer = styled.div`
   align-items: center;
   flex-direction: column;
   background: white;
-  width: ${RIHGT_WIDTH};
+  width: ${RIGHT_WIDTH};
   height: 100vh;
 `;
 

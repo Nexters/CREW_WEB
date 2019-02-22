@@ -7,6 +7,7 @@ import { ApplicantComponentType } from "components/ApplicantItem";
 import * as Styled from "./styled";
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
+  onCancel: (applicant: Applicant) => void;
   title: string;
   applicants: Applicant[];
 }
@@ -29,6 +30,7 @@ class ClassifiedList extends PureComponent<Props, State> {
           <ApplicantList
             applicants={applicants}
             type={ApplicantComponentType.Simple}
+            onCancel={this.props.onCancel}
           />
         </Styled.Body>
       </Styled.Container>

@@ -3,6 +3,7 @@ import { Checkbox } from "@material-ui/core";
 
 import { Applicant } from "models/Applicant";
 import { pad } from "utils/pad";
+import { getPositionKORLabel } from "utils/position";
 
 import * as Styled from "./styled";
 
@@ -16,6 +17,8 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   applicant: Applicant;
   number: number;
   onCheck: (applicant: Applicant) => void;
+  onCancel?: (applicant: Applicant) => void;
+  isChecked?: boolean;
 }
 
 interface State {}
@@ -23,6 +26,7 @@ interface State {}
 class ApplicantItem extends PureComponent<Props, State> {
   public static defaultProps: Partial<Props> = {
     type: ApplicantComponentType.Default,
+    isChecked: false,
   };
 
   public render() {
@@ -42,7 +46,9 @@ class ApplicantItem extends PureComponent<Props, State> {
           <Styled.Number>{pad("000", number)}</Styled.Number>
           <Styled.Thumbnail src={applicant.profileUrl} />
           <div>
-            <Styled.Position>{applicant.position}</Styled.Position>
+            <Styled.Position>
+              {getPositionKORLabel(applicant.position)}
+            </Styled.Position>
             <Styled.Name>{applicant.name}</Styled.Name>
           </div>
         </Fragment>
@@ -73,12 +79,15 @@ class ApplicantItem extends PureComponent<Props, State> {
             <Styled.Circle />
           </Styled.CircleContainer>
           <Styled.Score>80점</Styled.Score>
-          <Checkbox onChange={this.handleChangeCheckBox} />
+          <Checkbox
+            checked={this.props.isChecked}
+            onChange={this.handleChangeCheckBox}
+          />
         </Fragment>
       );
     } else if (type === "simple") {
       return (
-        <Styled.Xmark>
+        <Styled.Xmark onClick={this.handleClickXmark}>
           <i className="xi-x xi-close" />
         </Styled.Xmark>
       );
@@ -88,8 +97,13 @@ class ApplicantItem extends PureComponent<Props, State> {
   private handleChangeCheckBox = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    if (event.target.checked) {
-      this.props.onCheck(this.props.applicant);
+    this.props.onCheck(this.props.applicant);
+  };
+
+  private handleClickXmark = () => {
+    const { onCancel, applicant } = this.props;
+    if (onCancel) {
+      onCancel(applicant);
     }
   };
 }

@@ -1,6 +1,6 @@
 export enum Position {
-  Designer = "디자이너",
-  Developer = "개발자",
+  Designer = "designer",
+  Developer = "developer",
 }
 
 export interface Applicant {

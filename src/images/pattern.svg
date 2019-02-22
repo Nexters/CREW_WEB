@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1201" height="1080" viewBox="0 0 1201 1080">
+    <g fill="none" fill-rule="evenodd">
+        <path fill-rule="nonzero" stroke="#4A80F6" d="M119.5.5H.5v119h119V.5z"/>
+        <path fill-rule="nonzero" stroke="#979797" d="M719.5 120.5h-119v119h119v-119zM959.5.5h-119v119h119V.5zM239.5 240.5h-119v119h119v-119zM239.5 720.5h-119v119h119v-119zM480.5 720.5h119v119h-119zM960.5 720.5h119v119h-119zM600.5 960.5h119v119h-119z"/>
+        <path fill="#4A80F6" fill-rule="nonzero" d="M120 0v120H0V0zM480 0v120H360V0zM600 719v120H480V719z"/>
+        <path fill="#EDE8E7" fill-rule="nonzero" d="M721 960v120H601V960z"/>
+        <path fill="#4A80F6" fill-rule="nonzero" d="M720 120v120H600V120z"/>
+        <path fill="#FEBC27" fill-rule="nonzero" d="M960 0v120H840V0z"/>
+        <path fill="#4A80F6" fill-rule="nonzero" d="M1080 360v120H960V360z"/>
+        <path fill="#F4EFEE" fill-rule="nonzero" d="M1201 600v120h-120V600z"/>
+        <path fill="#FEBC27" fill-rule="nonzero" d="M721 600v120H601V600zM240 720v120H120V720zM120 480v120H0V480zM240 240v120H120V240zM1200 960v120h-120V960z"/>
+        <path fill="#4A80F6" fill-rule="nonzero" d="M1080 719v120H960V719z"/>
+        <path fill="#EDE8E7" d="M240 120c0 66.274-53.726 120-120 120V120h120zM481 360c66.274 0 120 53.726 120 120H481V360z"/>
+        <path fill="#FF7249" d="M721 360c66.274 0 120 53.726 120 120H721V360zM600 839c66.274 0 120 53.726 120 120H600V839zM959.82 959c0 66.274-53.726 120-120 120V959h120zM840 719c0 66.274-53.726 120-120 120V719h120z"/>
+        <path fill="#F4EFEE" d="M960 719c-66.274 0-120-53.726-120-120h120v120z"/>
+        <path fill="#FF7249" d="M1201 840c-66.274 0-120-53.726-120-120h120v120zM601 600c-66.274 0-120-53.726-120-120h120v120z"/>
+        <path fill="#4A80F6" d="M480 600c0 66.274-53.726 120-120 120V600h120z"/>
+        <path fill="#FF7249" d="M361 360c0-66.274 53.726-120 120-120v120H361zM720 0c66.274 0 120 53.726 120 120H720V0z"/>
+        <path fill="#FEBC27" d="M361 959c0-66.274 53.726-120 120-120v120H361z"/>
+        <path fill="#EDE8E7" d="M840 240c0-66.274 53.726-120 120-120v120H840z"/>
+        <path fill="#FEBC27" d="M1200 481c-66.274 0-120-53.726-120-120h120v120z"/>
+        <path fill="#EDE8E7" d="M120 1080c0-66.274 53.726-120 120-120v120H120z"/>
+        <path fill="#4A80F6" d="M601 600c0-66.274 53.726-120 120-120v120H601zM1081 600c0-66.274 53.726-120 120-120v120h-120zM960 360c0-66.274 53.726-120 120-120v120H960zM1080 120c-66.274 0-120-53.726-120-120h120v120zM840 959c0-66.274 53.726-120 120-120v120H840zM120 839.82c-66.274 0-120-53.726-120-120h120v120z"/>
+        <path fill="#FF7249" d="M240 480c66.274 0 120 53.726 120 120H240V480zM240 840c66.274 0 120 53.726 120 120H240V840zM601 1080c-66.274 0-120-53.726-120-120h120v120z"/>
+        <path fill="#FEBC27" d="M120 960C53.726 960 0 906.274 0 840h120v120z"/>
+        <path fill="#FF7249" d="M120 720c0-66.274 53.726-120 120-120v120H120z"/>
+        <path fill="#4A80F6" d="M240 120C240 53.726 293.726 0 360 0v120H240z"/>
+        <path fill="#FEBC27" d="M600 120c0 66.274-53.726 120-120 120V120h120zM720 240c0 66.274-53.726 120-120 120V240h120z"/>
+        <path fill="#FF7249" d="M960 240c0 66.274-53.726 120-120 120V240h120zM1200 120c0 66.274-53.726 120-120 120V120h120z"/>
+        <path fill="#F4EFEE" d="M1200-.82c0 66.274-53.726 120-120 120v-120h120z"/>
+        <path fill="#EDE8E7" d="M240 600c-66.274 0-120-53.726-120-120h120v120z"/>
+        <path fill="#4A80F6" d="M0 600c66.274 0 120 53.726 120 120H0V600z"/>
+        <path fill="#FF7249" d="M480 839c-66.274 0-120-53.726-120-120h120v120z"/>
+        <path fill="#4A80F6" fill-rule="nonzero" d="M360.18 1080.18H240V960z"/>
+        <path fill="#FF7249" fill-rule="nonzero" d="M120.18 1080.18H0V960z"/>
+        <path fill="#EDE8E7" fill-rule="nonzero" d="M360.18 840.18H240V720z"/>
+        <path fill="#FF7249" fill-rule="nonzero" d="M240.18 120.18H120V0z"/>
+        <path fill="#FEBC27" fill-rule="nonzero" d="M841.18 720.18H721V600zM1200.18 960.18H1080V840z"/>
+        <path fill="#4A80F6" fill-rule="nonzero" d="M960.18 600.18H840V480z"/>
+        <path fill="#FEBC27" fill-rule="nonzero" d="M840.18 839v120.18H720zM480.18 600.18H360V480z"/>
+        <path fill="#4A80F6" fill-rule="nonzero" d="M720.18 120.18H600V0zM120.18 240v120.18H0zM360.18 480H240V359.82z"/>
+        <path fill="#FEBC27" fill-rule="nonzero" d="M240 360.18V240h120.18z"/>
+    </g>
+</svg>

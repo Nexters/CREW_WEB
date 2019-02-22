@@ -7,19 +7,22 @@ import { ApplicantComponentType } from "components/ApplicantItem";
 import * as Styled from "./styled";
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
-  onCheck: (applicant: Applicant) => void;
   applicants: Applicant[];
   type: ApplicantComponentType;
+  checkedIdSet: Set<string>;
+  onCheck: (applicant: Applicant) => void;
+  onCancel?: (applicant: Applicant) => void;
 }
 interface State {}
 
 class ApplicantsList extends PureComponent<Props, State> {
   public static defaultProps: Partial<Props> = {
     type: ApplicantComponentType.Default,
+    checkedIdSet: new Set(),
   };
 
   public render() {
-    const { applicants, type } = this.props;
+    const { applicants, type, onCheck, onCancel, checkedIdSet } = this.props;
     return (
       <Styled.List>
         {applicants.map((applicant, index) => (
@@ -28,7 +31,9 @@ class ApplicantsList extends PureComponent<Props, State> {
               applicant={applicant}
               type={type}
               number={index + 1}
-              onCheck={this.props.onCheck}
+              onCheck={onCheck}
+              onCancel={onCancel}
+              isChecked={checkedIdSet.has(applicant.id)}
             />
           </Styled.Item>
         ))}

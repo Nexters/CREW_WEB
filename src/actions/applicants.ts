@@ -1,18 +1,42 @@
-import { Applicant } from "models/Applicant";
-import { SAVE_APPLICANTS_LIST } from "actionTypes/applicant";
+import { History } from "history";
+import {
+  UPDATE_APPLICANTS_LIST,
+  CHANGE_POSITION,
+  CLEAR_APPLICANTS_LIST,
+} from "actionTypes/applicant";
+import { Position } from "models/Applicant";
 
-export const saveApplicantsList = {
-  request: (allList: Applicant[], selectedList: Applicant[]) => ({
-    type: SAVE_APPLICANTS_LIST.REQUEST,
+export const updateApplicantList = {
+  request: (selectedIds: Set<string>) => ({
+    type: UPDATE_APPLICANTS_LIST.REQUEST,
     payload: {
-      allList,
-      selectedList,
+      selectedIds,
     },
   }),
   success: () => ({
-    type: SAVE_APPLICANTS_LIST.SUCCESS,
+    type: UPDATE_APPLICANTS_LIST.SUCCESS,
   }),
   failure: () => ({
-    type: SAVE_APPLICANTS_LIST.FAILURE,
+    type: UPDATE_APPLICANTS_LIST.FAILURE,
   }),
 };
+
+export const clearApplicantList = {
+  request: () => ({
+    type: CLEAR_APPLICANTS_LIST.REQUEST,
+  }),
+  success: () => ({
+    type: CLEAR_APPLICANTS_LIST.SUCCESS,
+  }),
+  failure: () => ({
+    type: CLEAR_APPLICANTS_LIST.FAILURE,
+  }),
+};
+
+export const changePosition = (position: Position, history: History<any>) => ({
+  type: CHANGE_POSITION,
+  payload: {
+    position,
+    history,
+  },
+});

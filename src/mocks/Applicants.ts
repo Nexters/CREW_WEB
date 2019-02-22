@@ -33,6 +33,14 @@ const applicants: Applicant[] = [
     email: "hyjang@crew.com",
     phone: "010-0000-0000",
   },
+  {
+    id: "김세진0000",
+    name: "김세진",
+    profileUrl: "https://placehold.it/50x50",
+    position: Position.Designer,
+    email: "hyjang@crew.com",
+    phone: "010-0000-0000",
+  },
 ];
 
 export default applicants;
