@@ -63,8 +63,17 @@ export const Right = styled.div`
   width: 355px;
 `;
 
-export const RightButtonWrapper = styled.div`
+export const RightWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
-  margin-top: 18px;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 20px;
+
+  :last-child {
+    margin-bottom: 0;
+  }
+
+  > button {
+    margin-top: 18px;
+  }
 `;

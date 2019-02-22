@@ -70,22 +70,24 @@ class ApplicantView extends PureComponent<Props, State> {
               </Styled.LeftButtonContainer>
             </Styled.Left>
             <Styled.Right>
-              <ClassifiedList
-                title="합격자 리스트"
-                applicants={passList}
-                onCancel={this.cancelSelectApplicant}
-              />
-              <Styled.RightButtonWrapper>
+              <Styled.RightWrapper>
+                <ClassifiedList
+                  title="합격자 리스트"
+                  applicants={passList}
+                  onCancel={this.cancelSelectApplicant}
+                />
+
                 <Button primary>메일 보내기</Button>
-              </Styled.RightButtonWrapper>
-              <ClassifiedList
-                title="불합격자 리스트"
-                applicants={failList}
-                onCancel={this.cancelSelectApplicant}
-              />
-              <Styled.RightButtonWrapper>
+              </Styled.RightWrapper>
+              <Styled.RightWrapper>
+                <ClassifiedList
+                  title="불합격자 리스트"
+                  applicants={failList}
+                  onCancel={this.cancelSelectApplicant}
+                />
+
                 <Button primary>메일 보내기</Button>
-              </Styled.RightButtonWrapper>
+              </Styled.RightWrapper>
             </Styled.Right>
           </Styled.Body>
         </Styled.Main>
