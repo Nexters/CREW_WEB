@@ -1,12 +1,11 @@
 import { History } from "history";
 import { UPDATE_APPLICANTS_LIST, CHANGE_POSITION } from "actionTypes/applicant";
-import { Applicant, Position } from "models/Applicant";
+import { Position } from "models/Applicant";
 
 export const updateApplicantList = {
-  request: (allList: Applicant[], selectedIds: Set<string>) => ({
+  request: (selectedIds: Set<string>) => ({
     type: UPDATE_APPLICANTS_LIST.REQUEST,
     payload: {
-      allList,
       selectedIds,
     },
   }),

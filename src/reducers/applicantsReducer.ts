@@ -2,7 +2,6 @@ import { Action } from "models/Redux";
 import { Applicant, Position } from "models/Applicant";
 import { UPDATE_APPLICANTS_LIST, CHANGE_POSITION } from "actionTypes/applicant";
 import { History } from "history";
-import qs from "querystring";
 
 import { pushUrlQuery } from "utils/historyHelper";
 
@@ -14,6 +13,7 @@ export interface State {
   passList: Applicant[];
   failList: Applicant[];
   selectedPosition: Position;
+  checkedIdSet: Set<string>;
 }
 
 const initialState: State = {
@@ -22,6 +22,7 @@ const initialState: State = {
   passList: [],
   failList: [],
   selectedPosition: Position.Developer,
+  checkedIdSet: new Set(),
 };
 
 export const reducer = (
@@ -50,11 +51,13 @@ export const reducer = (
         failList: [],
       };
     }
+
     case UPDATE_APPLICANTS_LIST.REQUEST: {
-      const { allList, selectedIds } = action.payload;
+      const { selectedIds } = action.payload;
+      const { filteredApplicants } = state;
       const passList: Applicant[] = [];
       const failList: Applicant[] = [];
-      allList.map((applicant: Applicant) => {
+      filteredApplicants.map((applicant: Applicant) => {
         if (selectedIds.has(applicant.id)) {
           passList.push(applicant);
         } else {

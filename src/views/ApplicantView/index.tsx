@@ -17,7 +17,7 @@ interface Props extends RouteComponentProps {
   applicants: Applicant[];
   passList: Applicant[];
   failList: Applicant[];
-  updateApplicantList: (allList: Applicant[], selectedIds: Set<string>) => void;
+  updateApplicantList: (selectedIds: Set<string>) => void;
 }
 
 interface State {
@@ -116,8 +116,8 @@ class ApplicantView extends PureComponent<Props, State> {
   };
 
   private handleClickSaveButton = () => {
-    const { checkedIdSet, filteredApplicants } = this.state;
-    this.props.updateApplicantList(filteredApplicants, checkedIdSet);
+    const { checkedIdSet } = this.state;
+    this.props.updateApplicantList(checkedIdSet);
   };
 
   private selectApplicant = (applicant: Applicant) => {
@@ -133,7 +133,7 @@ class ApplicantView extends PureComponent<Props, State> {
   };
 
   private cancelSelectApplicant = (applicant: Applicant) => {
-    const { filteredApplicants, checkedIdSet } = this.state;
+    const { checkedIdSet } = this.state;
     if (checkedIdSet.has(applicant.id)) {
       checkedIdSet.delete(applicant.id);
     } else {
@@ -142,7 +142,7 @@ class ApplicantView extends PureComponent<Props, State> {
     this.setState({
       checkedIdSet: new Set([...checkedIdSet.values()]),
     });
-    this.props.updateApplicantList(filteredApplicants, checkedIdSet);
+    this.props.updateApplicantList(checkedIdSet);
   };
 }
 
