@@ -21,7 +21,6 @@ class LoginView extends PureComponent {
               로그인을 해주세요.
             </Styled.RightHeaderSubTitle>
           </Styled.RightHeader>
-
           <Styled.RightBody>
             <Styled.LoginButtons>
               <LoginButton
