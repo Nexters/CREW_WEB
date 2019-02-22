@@ -3,6 +3,10 @@ import { YELLOW, GRAY2 } from "constants/colors";
 
 import { Props, ApplicantComponentType } from "./index";
 
+interface CircleProps {
+  active: boolean;
+}
+
 export const Container = styled.div<Props>`
   display: flex;
   justify-content: space-between;
@@ -70,11 +74,11 @@ export const CircleContainer = styled.div`
   margin-right: 30px;
 `;
 
-export const Circle = styled.div`
+export const Circle = styled.div<CircleProps>`
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: ${YELLOW};
+  background: ${(props) => (props.active ? YELLOW : "#e4e4e4")};
   margin-right: 5px;
 
   :last-child {

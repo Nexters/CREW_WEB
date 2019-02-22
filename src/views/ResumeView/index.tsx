@@ -1,5 +1,7 @@
 import React, { PureComponent, Fragment } from "react";
 import { Button, Selections } from "components";
+import { connect } from "react-redux";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import {
   SingleLineQuestion,
   MultilineQuestion,
@@ -7,54 +9,48 @@ import {
   QuestionType,
 } from "models/Form";
 
-import * as Styled from "./styled";
+import { AppState } from "reducers/rootReducer";
+
+import { updateApplicantScore } from "actions/applicants";
 import { pad } from "utils/pad";
+import { getQuery } from "utils/historyHelper";
+import { Score, Applicant } from "models/Applicant";
 
 import MockedQuestions from "mocks/Forms";
 
-interface Score {
-  score: number;
-  comment: string;
+import * as Styled from "./styled";
+
+export interface Props extends RouteComponentProps {
+  applicants: Applicant[];
+  updateApplicantScore: (
+    applicantId: string,
+    scoreIdx: number,
+    score: number,
+  ) => void;
 }
 
-export interface Props {}
-interface State {
-  scores: Score[];
-}
+interface State {}
 
 class ResumeView extends PureComponent<Props, State> {
   public constructor(props: Props) {
     super(props);
-
-    this.state = {
-      scores: [
-        {
-          score: 0,
-          comment: "",
-        },
-        {
-          score: 0,
-          comment: "",
-        },
-        {
-          score: 0,
-          comment: "",
-        },
-        {
-          score: 0,
-          comment: "",
-        },
-        {
-          score: 0,
-          comment: "",
-        },
-      ],
-    };
+    const id = getQuery(props.history.location).id;
+    const index = props.applicants.findIndex(
+      (applicant) => applicant.id === id,
+    );
   }
 
   public render() {
     let sum = 0;
-    const { scores } = this.state;
+    const { history, applicants } = this.props;
+    const applicantId = getQuery(history.location).id;
+    const selectedApplicant = applicants.find(
+      (applicant) => applicant.id === applicantId,
+    );
+    if (!selectedApplicant) {
+      return null;
+    }
+    const scores = selectedApplicant.scores;
     const notZero = scores.filter((score) => score.score !== 0).length;
     scores.forEach((score) => (sum += score.score));
 
@@ -62,7 +58,9 @@ class ResumeView extends PureComponent<Props, State> {
       <Styled.Container>
         <Styled.Header>
           <Styled.Title>지원자 상세정보</Styled.Title>
-          <Styled.Profile>{this.renderProfile()}</Styled.Profile>
+          <Styled.Profile>
+            {this.renderProfile(selectedApplicant)}
+          </Styled.Profile>
         </Styled.Header>
         <Styled.Body>
           <Styled.QuestionList>{this.renderQuestionList()}</Styled.QuestionList>
@@ -71,7 +69,7 @@ class ResumeView extends PureComponent<Props, State> {
           <Styled.Section>
             <Styled.Label>점수 매기기</Styled.Label>
             <Styled.ScoreBoxes>
-              {this.state.scores.map((score: Score, index: number) => (
+              {scores.map((score: Score, index: number) => (
                 <Styled.ScoreRow key={index}>
                   <Styled.ScoreBox
                     type="number"
@@ -83,8 +81,7 @@ class ResumeView extends PureComponent<Props, State> {
               ))}
             </Styled.ScoreBoxes>
             <Styled.avgScore>
-              <span>평균 점수</span>{" "}
-              <b>{Math.floor((sum / (notZero || 1)) * 100) / 100}</b>점
+              <span>평균 점수</span> <b>{selectedApplicant.avg}</b>점
             </Styled.avgScore>
             <Button primary>저장하기</Button>
           </Styled.Section>
@@ -100,25 +97,17 @@ class ResumeView extends PureComponent<Props, State> {
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const { value } = e.target;
-    this.setState({
-      scores: [
-        ...this.state.scores.slice(0, index),
-        {
-          score: Number(value),
-          comment: this.state.scores[index].comment,
-        },
-        ...this.state.scores.slice(index + 1),
-      ],
-    });
+    const id = getQuery(this.props.history.location).id;
+    this.props.updateApplicantScore(id as string, index, Number(value));
   };
 
-  private renderProfile = () => {
+  private renderProfile = (applicant: Applicant) => {
     return (
       <Fragment>
         <Styled.ProfileImage src="https://placehold.it/100x100" />
         <Styled.ProfileItem>
           <Styled.ProfileItemLabel>이름</Styled.ProfileItemLabel>
-          <Styled.ProfileItemValue>장혜연</Styled.ProfileItemValue>
+          <Styled.ProfileItemValue>{applicant.name}</Styled.ProfileItemValue>
         </Styled.ProfileItem>
         <Styled.ProfileItem>
           <Styled.ProfileItemLabel>나이</Styled.ProfileItemLabel>
@@ -126,13 +115,11 @@ class ResumeView extends PureComponent<Props, State> {
         </Styled.ProfileItem>
         <Styled.ProfileItem>
           <Styled.ProfileItemLabel>이메일</Styled.ProfileItemLabel>
-          <Styled.ProfileItemValue>
-            nayunhwan.dev@gmail.com
-          </Styled.ProfileItemValue>
+          <Styled.ProfileItemValue>{applicant.email}</Styled.ProfileItemValue>
         </Styled.ProfileItem>
         <Styled.ProfileItem>
           <Styled.ProfileItemLabel>핸드폰</Styled.ProfileItemLabel>
-          <Styled.ProfileItemValue>010-8436-9288</Styled.ProfileItemValue>
+          <Styled.ProfileItemValue>{applicant.phone}</Styled.ProfileItemValue>
         </Styled.ProfileItem>
         <Styled.ProfileItem>
           <Styled.ProfileItemLabel>직업</Styled.ProfileItemLabel>
@@ -168,4 +155,16 @@ class ResumeView extends PureComponent<Props, State> {
   };
 }
 
-export default ResumeView;
+const mapStateToProps = (state: AppState) => ({
+  applicants: state.applicantReducer.applicants,
+});
+const mapDispatchToProps = {
+  updateApplicantScore,
+};
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+export default withRouter(withConnect(ResumeView));

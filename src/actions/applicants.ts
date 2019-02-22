@@ -3,6 +3,7 @@ import {
   UPDATE_APPLICANTS_LIST,
   CHANGE_POSITION,
   CLEAR_APPLICANTS_LIST,
+  UPDATE_APPLICANT_SCORE,
 } from "actionTypes/applicant";
 import { Position } from "models/Applicant";
 
@@ -38,5 +39,18 @@ export const changePosition = (position: Position, history: History<any>) => ({
   payload: {
     position,
     history,
+  },
+});
+
+export const updateApplicantScore = (
+  applicantId: string,
+  scoreIdx: number,
+  score: number,
+) => ({
+  type: UPDATE_APPLICANT_SCORE,
+  payload: {
+    applicantId,
+    scoreIdx,
+    score,
   },
 });

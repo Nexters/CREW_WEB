@@ -4,6 +4,7 @@ import {
   UPDATE_APPLICANTS_LIST,
   CHANGE_POSITION,
   CLEAR_APPLICANTS_LIST,
+  UPDATE_APPLICANT_SCORE,
 } from "actionTypes/applicant";
 import { History } from "history";
 
@@ -81,6 +82,53 @@ export const reducer = (
         ...state,
         passList: [],
         failList: [],
+      };
+    }
+
+    case UPDATE_APPLICANT_SCORE: {
+      const {
+        applicantId,
+        scoreIdx,
+        score,
+      }: {
+        applicantId: string;
+        scoreIdx: number;
+        score: number;
+      } = action.payload;
+      const { applicants } = state;
+      const applicantIdx = applicants.findIndex(
+        (item: Applicant) => item.id === applicantId,
+      );
+
+      if (applicantIdx === -1) {
+        return {
+          ...state,
+        };
+      }
+
+      const applicant = applicants[applicantIdx];
+      const scores = [
+        ...applicant.scores.slice(0, scoreIdx),
+        {
+          score,
+          comment: applicant.scores[scoreIdx].comment,
+        },
+        ...applicant.scores.slice(scoreIdx + 1),
+      ];
+      const sum = scores.reduce((a, b) => a + b.score, 0);
+      const notZero = scores.filter((item) => item.score !== 0).length;
+
+      return {
+        ...state,
+        applicants: [
+          ...applicants.slice(0, applicantIdx),
+          {
+            ...applicant,
+            scores,
+            avg: Math.floor((sum / (notZero || 1)) * 100) / 100,
+          },
+          ...applicants.slice(applicantIdx + 1),
+        ],
       };
     }
     default: {

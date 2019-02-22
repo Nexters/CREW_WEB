@@ -10,4 +10,10 @@ export interface Applicant {
   position: Position;
   email: string;
   phone: string;
+  scores: Score[];
+  avg: number;
+}
+export interface Score {
+  score: number;
+  comment: string;
 }

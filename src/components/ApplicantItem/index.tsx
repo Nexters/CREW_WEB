@@ -1,4 +1,5 @@
 import React, { PureComponent, HTMLAttributes, Fragment } from "react";
+import { Link, withRouter, RouteComponentProps } from "react-router-dom";
 import { Checkbox } from "@material-ui/core";
 
 import { Applicant } from "models/Applicant";
@@ -12,7 +13,9 @@ export enum ApplicantComponentType {
   Simple = "simple",
 }
 
-export interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface Props
+  extends RouteComponentProps,
+    HTMLAttributes<HTMLDivElement> {
   type: ApplicantComponentType;
   applicant: Applicant;
   number: number;
@@ -32,7 +35,9 @@ class ApplicantItem extends PureComponent<Props, State> {
   public render() {
     return (
       <Styled.Container {...this.props}>
-        <Styled.Left>{this.renderLeftContainer()}</Styled.Left>
+        <Link to={`/resume?id=${this.props.applicant.id}`}>
+          <Styled.Left>{this.renderLeftContainer()}</Styled.Left>
+        </Link>
         <Styled.Right>{this.renderRightContainer()}</Styled.Right>
       </Styled.Container>
     );
@@ -69,18 +74,17 @@ class ApplicantItem extends PureComponent<Props, State> {
   };
 
   private renderRightContainer = () => {
-    const { type } = this.props;
+    const { type, applicant } = this.props;
+
     if (type === "default") {
       return (
         <Fragment>
           <Styled.CircleContainer>
-            <Styled.Circle />
-            <Styled.Circle />
-            <Styled.Circle />
-            <Styled.Circle />
-            <Styled.Circle />
+            {applicant.scores.map((score) => (
+              <Styled.Circle active={score.score !== 0} />
+            ))}
           </Styled.CircleContainer>
-          <Styled.Score>80점</Styled.Score>
+          <Styled.Score>{applicant.avg}점</Styled.Score>
           <Checkbox
             checked={this.props.isChecked}
             onChange={this.handleChangeCheckBox}
@@ -110,4 +114,4 @@ class ApplicantItem extends PureComponent<Props, State> {
   };
 }
 
-export default ApplicantItem;
+export default withRouter(ApplicantItem);
