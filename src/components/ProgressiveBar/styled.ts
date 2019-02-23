@@ -13,6 +13,7 @@ export const Container = styled.div`
 
 export const Bar = styled.div<Props>`
   width: ${(props) => `calc(${(props.index * 100) / props.max}%)`};
+  transition: 0.6s;
   height: 6px;
   background: ${MAIN_COLOR};
 `;
