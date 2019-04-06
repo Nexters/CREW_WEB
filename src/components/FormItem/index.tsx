@@ -24,6 +24,7 @@ const options: QuestionOption[] = [
 ];
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
+  removeHandler: () => void;
   question: Question;
   index: number;
 }
@@ -48,7 +49,7 @@ class FormItem extends PureComponent<Props, State> {
   }
 
   public render() {
-    const { index } = this.props;
+    const { index, removeHandler: onRemove } = this.props;
     const { title, selectedOption, isRequired } = this.state;
     return (
       <Styled.Container {...this.props}>
@@ -73,7 +74,7 @@ class FormItem extends PureComponent<Props, State> {
           </Styled.RightTop>
           {this.renderRight(selectedOption.value)}
           <Styled.RightBottom>
-            <i className="xi-trash-o" />
+            <i className="xi-trash-o" onClick={onRemove} />
             <FormControlLabel
               control={
                 <Switch

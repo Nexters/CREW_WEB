@@ -60,6 +60,17 @@ export const reducer = (
         questions: [...state.questions, newItem],
       };
     }
+    case REMOVE_FORM_ITEM.REQUEST: {
+      const { idx } = action.payload;
+
+      return {
+        ...state,
+        questions: [
+          ...state.questions.slice(0, idx),
+          ...state.questions.slice(idx + 1),
+        ],
+      };
+    }
     default: {
       return state;
     }

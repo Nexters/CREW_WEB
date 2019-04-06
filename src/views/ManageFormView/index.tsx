@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 
 import { AppState } from "reducers/rootReducer";
-import { createFormItem } from "actions/form";
+import { createFormItem, removeFormItem } from "actions/form";
 
 import { Question, QuestionType } from "models/Form";
 import { Gnb, FormItem, AddButton } from "components";
@@ -11,6 +11,7 @@ import * as Styled from "./styled";
 
 interface Props {
   createFormItem: () => void;
+  removeFormItem: (idx: number) => void;
   questions: Question[];
 }
 interface State {}
@@ -28,6 +29,7 @@ class ManageForm extends PureComponent<Props, State> {
                 question={question}
                 key={`${question.title}__${idx}`}
                 index={idx + 1}
+                removeHandler={this.handleClickRemoveButton(idx)}
               />
             ))}
           </Styled.FormList>
@@ -42,6 +44,10 @@ class ManageForm extends PureComponent<Props, State> {
   private handleClickAddButton = () => {
     this.props.createFormItem();
   };
+
+  private handleClickRemoveButton = (idx: number) => () => {
+    this.props.removeFormItem(idx);
+  };
 }
 
 const mapStateToProps = (state: AppState) => ({
@@ -50,6 +56,7 @@ const mapStateToProps = (state: AppState) => ({
 
 const mapDispatchToProps = {
   createFormItem: createFormItem.request,
+  removeFormItem: removeFormItem.request,
 };
 
 const withConnect = connect(
