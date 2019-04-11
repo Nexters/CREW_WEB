@@ -6,6 +6,7 @@ import * as Styled from "./styled";
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   question: SelectQuestion;
   labelWidth?: string;
+  selectable: boolean;
 }
 interface State {}
 

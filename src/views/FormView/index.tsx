@@ -88,7 +88,7 @@ class FormView extends PureComponent<Props, State> {
         return <Styled.textarea />;
       }
       case QuestionType.Select: {
-        return <Selections question={question as SelectQuestion} />;
+        return <Selections question={question as SelectQuestion} selectable />;
       }
       default: {
         return <Styled.textarea />;
