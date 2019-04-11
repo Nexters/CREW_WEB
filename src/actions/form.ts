@@ -39,8 +39,11 @@ export const updateFormItem = {
 };
 
 export const removeFormItem = {
-  request: () => ({
+  request: (idx: number) => ({
     type: REMOVE_FORM_ITEM.REQUEST,
+    payload: {
+      idx,
+    },
   }),
   success: () => ({
     type: REMOVE_FORM_ITEM.SUCCESS,
