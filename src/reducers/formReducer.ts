@@ -1,4 +1,5 @@
 import { Action } from "models/Redux";
+import uuid from "uuid/v4";
 import {
   NEXT_QUESTION,
   PREV_QUESTION,
@@ -50,14 +51,28 @@ export const reducer = (
     }
     case CREATE_FORM_ITEM.REQUEST: {
       const newItem: Question = {
+        id: uuid(),
         type: QuestionType.SingleLine,
         title: "",
         placeholder: "",
         isRequired: false,
+        value: "",
       };
       return {
         ...state,
         questions: [...state.questions, newItem],
+      };
+    }
+    case UPDATE_FORM_ITEM.REQUEST: {
+      const { id, value } = action.payload;
+      const idx = state.questions.findIndex((question) => question.id === id);
+      return {
+        ...state,
+        questions: [
+          ...state.questions.slice(0, idx),
+          { ...state.questions[idx], value },
+          ...state.questions.slice(idx + 1),
+        ],
       };
     }
     case REMOVE_FORM_ITEM.REQUEST: {

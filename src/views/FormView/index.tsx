@@ -5,8 +5,13 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 import { AppState } from "reducers/rootReducer";
 
 import { ProgressiveBar, Step, Selections } from "components";
-import { Question, QuestionType, SelectQuestion } from "models/Form";
-import { prevQuestion, nextQuestion } from "actions/form";
+import {
+  Question,
+  QuestionType,
+  SelectQuestion,
+  QuestionValue,
+} from "models/Form";
+import { prevQuestion, nextQuestion, updateFormItem } from "actions/form";
 import { pad } from "utils/pad";
 
 import * as Styled from "./styled";
@@ -14,6 +19,7 @@ import * as Styled from "./styled";
 interface Props extends RouteComponentProps {
   prevQuestion: () => void;
   nextQuestion: () => void;
+  updateFormItem: (id: string, value: QuestionValue) => void;
   questions: Question[];
   questionNumber: number;
 }
@@ -88,7 +94,13 @@ class FormView extends PureComponent<Props, State> {
         return <Styled.textarea />;
       }
       case QuestionType.Select: {
-        return <Selections question={question as SelectQuestion} selectable />;
+        return (
+          <Selections
+            question={question as SelectQuestion}
+            onClickOption={this.props.updateFormItem}
+            selectable
+          />
+        );
       }
       default: {
         return <Styled.textarea />;
@@ -105,6 +117,7 @@ const mapStateToProps = (state: AppState) => ({
 const mapDispatchToProps = {
   prevQuestion,
   nextQuestion,
+  updateFormItem: updateFormItem.request,
 };
 
 const withConnect = connect(
