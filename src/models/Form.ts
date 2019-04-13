@@ -5,11 +5,15 @@ export enum QuestionType {
 }
 
 export interface Question {
+  id: string;
   type: QuestionType;
   title: string;
   placeholder: string;
   isRequired: boolean;
+  value: QuestionValue;
 }
+
+export type QuestionValue = string | number;
 
 export interface SingleLineQuestion extends Question {
   type: QuestionType.SingleLine;

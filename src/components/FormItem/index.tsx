@@ -124,6 +124,7 @@ class FormItem extends PureComponent<Props, State> {
           <Selections
             question={mocked[1] as SelectQuestion}
             labelWidth="514px"
+            selectable={false}
           />
         );
       }

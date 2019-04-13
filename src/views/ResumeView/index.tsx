@@ -140,7 +140,7 @@ class ResumeView extends PureComponent<Props, State> {
         answer = <Styled.Answer>{question.value}</Styled.Answer>;
       } else if (item.type === QuestionType.Select) {
         const question = item as SelectQuestion;
-        answer = <Selections question={question} />;
+        answer = <Selections question={question} selectable={false} />;
       }
       return (
         <Styled.Question key={`${item.title}::${index}`}>
