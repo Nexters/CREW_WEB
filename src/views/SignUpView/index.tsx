@@ -10,8 +10,8 @@ import {
 import Step from "@material-ui/core/Step";
 import * as Styled from "./styled";
 import { string } from "prop-types";
-import { InputType } from "src/models/Input";
-import { TextInput } from "src/components";
+import { InputType } from "models/Input";
+import { TextInput } from "components";
 
 interface RadioOption {
   label: string;
@@ -84,7 +84,7 @@ class ApplyStep1 extends PureComponent<Props, State> {
                       justifyContent: "space-between",
                     }}
                   >
-                    {JOB_MENU.map(option => (
+                    {JOB_MENU.map((option) => (
                       <FormControlLabel
                         label={option.label}
                         value={option.value}

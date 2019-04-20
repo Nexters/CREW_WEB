@@ -1,6 +1,6 @@
 export enum InputType {
-    NUMBER,
-    EMAIL,
-    PHONE,
-    STRING
+  NUMBER,
+  EMAIL,
+  PHONE,
+  STRING,
 }

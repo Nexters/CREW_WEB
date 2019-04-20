@@ -1,5 +1,5 @@
 import React, { PureComponent, ChangeEvent, HTMLAttributes } from "react";
-import { InputType } from "src/models/Input";
+import { InputType } from "models/Input";
 import { TextField } from "@material-ui/core";
 import * as Styled from "./styled";
 
