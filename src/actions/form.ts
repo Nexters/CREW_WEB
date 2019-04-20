@@ -6,6 +6,8 @@ import {
   REMOVE_FORM_ITEM,
 } from "actionTypes/form";
 
+import { QuestionValue } from "models/Form";
+
 export const nextQuestion = () => ({
   type: NEXT_QUESTION,
 });
@@ -27,8 +29,12 @@ export const createFormItem = {
 };
 
 export const updateFormItem = {
-  request: () => ({
+  request: (formItemId: string, value: QuestionValue) => ({
     type: UPDATE_FORM_ITEM.REQUEST,
+    payload: {
+      id: formItemId,
+      value,
+    },
   }),
   success: () => ({
     type: UPDATE_FORM_ITEM.SUCCESS,
@@ -39,8 +45,11 @@ export const updateFormItem = {
 };
 
 export const removeFormItem = {
-  request: () => ({
+  request: (idx: number) => ({
     type: REMOVE_FORM_ITEM.REQUEST,
+    payload: {
+      idx,
+    },
   }),
   success: () => ({
     type: REMOVE_FORM_ITEM.SUCCESS,

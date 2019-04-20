@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { MAIN_COLOR } from "constants/colors";
 
 interface AnswerOptionProps {
-  isSelected: Boolean;
+  isSelected: boolean;
 }
 
 interface AnswerLabelProps {
