@@ -11,6 +11,7 @@ import ProgressiveBar from "./ProgressiveBar";
 import SelectCard from "./SelectCard";
 import Selections from "./Selections";
 import Step from "./Step";
+import TextInput from "./TextInput";
 
 export {
   AddButton,
@@ -26,4 +27,5 @@ export {
   SelectCard,
   Selections,
   Step,
+  TextInput,
 };

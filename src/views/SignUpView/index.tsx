@@ -10,6 +10,8 @@ import {
 import Step from "@material-ui/core/Step";
 import * as Styled from "./styled";
 import { string } from "prop-types";
+import { InputType } from "src/models/Input";
+import { TextInput } from "src/components";
 
 interface RadioOption {
   label: string;
@@ -56,18 +58,8 @@ class ApplyStep1 extends PureComponent<Props, State> {
           </Styled.LeftContainer>
           <Styled.RightContainer>
             <Styled.TextInputContainer>
-              <TextField
-                label="이름"
-                value={this.state.textField}
-                onChange={this.handleChangeTextField}
-                margin="normal"
-              />
-              <TextField
-                label="나이"
-                value={this.state.textField}
-                onChange={this.handleChangeTextField}
-                margin="normal"
-              />
+              <TextInput label="이름" type={InputType.STRING} />
+              <TextInput label="나이" type={InputType.NUMBER} />
               <TextField
                 label="E-mail"
                 value={this.state.textField}
@@ -92,7 +84,7 @@ class ApplyStep1 extends PureComponent<Props, State> {
                       justifyContent: "space-between",
                     }}
                   >
-                    {JOB_MENU.map((option) => (
+                    {JOB_MENU.map(option => (
                       <FormControlLabel
                         label={option.label}
                         value={option.value}
