@@ -38,7 +38,7 @@ const JOB_MENU: RadioOption[] = [
   },
 ];
 
-class ApplyStep1 extends PureComponent<Props, State> {
+class SignUpView extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -60,9 +60,17 @@ class ApplyStep1 extends PureComponent<Props, State> {
           <Styled.RightContainer>
             <Styled.TextInputContainer>
               <TextInput label="이름" type={InputType.STRING} required={true} />
-              <TextInput label="나이" type={InputType.NUMBER} required={true}/>
-              <TextInput label="E-mail" type={InputType.EMAIL} required={true}/>
-              <TextInput label="전화번호" type={InputType.PHONE} required={true}/>
+              <TextInput label="나이" type={InputType.NUMBER} required={true} />
+              <TextInput
+                label="E-mail"
+                type={InputType.EMAIL}
+                required={true}
+              />
+              <TextInput
+                label="전화번호"
+                type={InputType.PHONE}
+                required={true}
+              />
               <Styled.SelectWorkContainer>
                 <FormControl>
                   <FormLabel>직업</FormLabel>
@@ -75,7 +83,7 @@ class ApplyStep1 extends PureComponent<Props, State> {
                       justifyContent: "space-between",
                     }}
                   >
-                    {JOB_MENU.map(option => (
+                    {JOB_MENU.map((option) => (
                       <FormControlLabel
                         label={option.label}
                         value={option.value}
@@ -108,4 +116,4 @@ class ApplyStep1 extends PureComponent<Props, State> {
   };
 }
 
-export default ApplyStep1;
+export default SignUpView;
