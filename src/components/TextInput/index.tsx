@@ -1,7 +1,6 @@
 import React, { PureComponent, ChangeEvent, HTMLAttributes } from "react";
-import { InputType } from "src/models/Input";
+import { InputType } from "models/Input";
 import { TextField } from "@material-ui/core";
-import * as Styled from "./styled";
 
 interface Props extends HTMLAttributes<HTMLInputElement> {
   type: InputType;
@@ -30,6 +29,8 @@ class TextInput extends PureComponent<Props, State> {
         placeholder={this.props.placeholder}
         onChange={this.handleChangeTextField}
         margin="normal"
+        error={!this.state.isValidate}
+        helperText={!this.state.isValidate && "올바른 데이터를 입력하세요."}
       />
     );
   }
@@ -44,14 +45,13 @@ class TextInput extends PureComponent<Props, State> {
           textField: value,
           isValidate: true,
         });
+        break;
       }
       case InputType.NUMBER: {
-        if (this.isValidateNumber(value)) {
-          this.setState({
-            textField: value,
-            isValidate: true,
-          });
-        }
+        this.setState({
+          textField: value,
+          isValidate: this.isValidateNumber(value),
+        });
         break;
       }
       case InputType.EMAIL: {
