@@ -7,9 +7,9 @@ import {
   FormLabel,
   FormControl,
 } from "@material-ui/core";
-import Step from "@material-ui/core/Step";
 import * as Styled from "./styled";
-import { string } from "prop-types";
+import { InputType } from "models/Input";
+import { TextInput } from "components";
 
 interface RadioOption {
   label: string;
@@ -36,7 +36,7 @@ const JOB_MENU: RadioOption[] = [
   },
 ];
 
-class ApplyStep1 extends PureComponent<Props, State> {
+class SignUpView extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -44,6 +44,7 @@ class ApplyStep1 extends PureComponent<Props, State> {
       selectedJob: JOB_MENU[0].value,
     };
   }
+
   public render() {
     return (
       <Styled.FormView>
@@ -56,29 +57,17 @@ class ApplyStep1 extends PureComponent<Props, State> {
           </Styled.LeftContainer>
           <Styled.RightContainer>
             <Styled.TextInputContainer>
-              <TextField
-                label="이름"
-                value={this.state.textField}
-                onChange={this.handleChangeTextField}
-                margin="normal"
-              />
-              <TextField
-                label="나이"
-                value={this.state.textField}
-                onChange={this.handleChangeTextField}
-                margin="normal"
-              />
-              <TextField
+              <TextInput label="이름" type={InputType.STRING} required={true} />
+              <TextInput label="나이" type={InputType.NUMBER} required={true} />
+              <TextInput
                 label="E-mail"
-                value={this.state.textField}
-                onChange={this.handleChangeTextField}
-                margin="normal"
+                type={InputType.EMAIL}
+                required={true}
               />
-              <TextField
+              <TextInput
                 label="전화번호"
-                value={this.state.textField}
-                onChange={this.handleChangeTextField}
-                margin="normal"
+                type={InputType.PHONE}
+                required={true}
               />
               <Styled.SelectWorkContainer>
                 <FormControl>
@@ -125,4 +114,4 @@ class ApplyStep1 extends PureComponent<Props, State> {
   };
 }
 
-export default ApplyStep1;
+export default SignUpView;
