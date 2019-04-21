@@ -7,9 +7,7 @@ import {
   FormLabel,
   FormControl,
 } from "@material-ui/core";
-import Step from "@material-ui/core/Step";
 import * as Styled from "./styled";
-import { string } from "prop-types";
 import { InputType } from "models/Input";
 import { TextInput } from "components";
 
