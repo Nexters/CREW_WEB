@@ -46,6 +46,7 @@ class ApplyStep1 extends PureComponent<Props, State> {
       selectedJob: JOB_MENU[0].value,
     };
   }
+
   public render() {
     return (
       <Styled.FormView>
@@ -58,10 +59,10 @@ class ApplyStep1 extends PureComponent<Props, State> {
           </Styled.LeftContainer>
           <Styled.RightContainer>
             <Styled.TextInputContainer>
-              <TextInput label="이름" type={InputType.STRING} />
-              <TextInput label="나이" type={InputType.NUMBER} />
-              <TextInput label="E-mail" type={InputType.EMAIL} />
-              <TextInput label="전화번호" type={InputType.PHONE} />
+              <TextInput label="이름" type={InputType.STRING} required={true} />
+              <TextInput label="나이" type={InputType.NUMBER} required={true}/>
+              <TextInput label="E-mail" type={InputType.EMAIL} required={true}/>
+              <TextInput label="전화번호" type={InputType.PHONE} required={true}/>
               <Styled.SelectWorkContainer>
                 <FormControl>
                   <FormLabel>직업</FormLabel>

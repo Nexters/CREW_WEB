@@ -6,6 +6,7 @@ interface Props extends HTMLAttributes<HTMLInputElement> {
   type: InputType;
   label: string;
   placeHolder?: string;
+  required?: boolean;
 }
 
 interface State {
@@ -31,6 +32,7 @@ class TextInput extends PureComponent<Props, State> {
         margin="normal"
         error={!this.state.isValidate}
         helperText={!this.state.isValidate && "올바른 데이터를 입력하세요."}
+        required={this.props.required}
       />
     );
   }
